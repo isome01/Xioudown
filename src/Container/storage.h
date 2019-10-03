@@ -8,7 +8,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  Storage classes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 //An item storage for any animated object; Will be used for inventory and item equip.
-namespace Astral {namespace Container{
+namespace Xioudown {namespace Container{
     using std::vector;
     
     class Storage{

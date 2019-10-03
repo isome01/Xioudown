@@ -4,7 +4,7 @@
 #include <vector>
 
 //This class is used to define the player's device for i/o 
-namespace Astral{ namespace Essentials{
+namespace Xioudown{ namespace Essentials{
 
     class gameIOController{
         private:

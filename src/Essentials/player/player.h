@@ -7,7 +7,7 @@
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Player Object ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-namespace Astral{ namespace Essentials{
+namespace Xioudown{ namespace Essentials{
     class Player{
     private:
         //Player avatar

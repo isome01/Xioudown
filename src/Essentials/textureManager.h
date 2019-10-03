@@ -10,7 +10,7 @@
 #include <string>
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Texture manager version 2: singleton class ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace Astral { namespace Essentials {
+namespace Xioudown { namespace Essentials {
     class TextureManager{
     private:
         std::vector<SDL_Texture*> textures;

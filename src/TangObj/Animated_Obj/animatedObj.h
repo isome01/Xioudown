@@ -3,7 +3,7 @@
 #include "../tangibleObj.h"
 #include "../../Essentials/timer.h"
 
-namespace Astral { namespace TangObj {
+namespace Xioudown { namespace TangObj {
     //This is our abstract animated [base] class, which is also a tangible object within the game.
     class AnimatedObj : public TangibleObj
     {

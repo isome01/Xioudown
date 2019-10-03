@@ -9,7 +9,7 @@
 
 #define log(x) std::cout << "Player obj: " << x << std::endl;
 
-namespace Astral{ namespace Essentials{
+namespace Xioudown{ namespace Essentials{
 
     Player::Player(){
         playerObj = new TangObj::Knight(false);

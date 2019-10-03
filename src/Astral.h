@@ -39,13 +39,13 @@
 
 
 //For the sake of usability, let's create a shortcut for the catalyst/singleton 
-#ifndef Astral_Cat
+#ifndef Xioudown_Cat
 
 //define catalyst instantiator
 #define Inst_Catalyst(inst) gameCatalyst* gameCatalyst::world = inst
 
 //define nickname for catalyst instance
-#define Astral_Cat gameCatalyst::gWorld()
+#define Xioudown_Cat gameCatalyst::gWorld()
 
 #endif
 

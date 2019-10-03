@@ -10,7 +10,7 @@
 
 #define log(x) std::cout << x << std::endl;
 
-namespace Astral{ namespace Math{
+namespace Xioudown{ namespace Math{
 
     using namespace Essentials;
     char *appendToString(char *a, char *b){

@@ -11,7 +11,7 @@
 
 #define log(x) std::cout << x << std::endl;
 
-namespace Astral{ namespace Math {
+namespace Xioudown{ namespace Math {
     
     class Polygon{
         private:

@@ -9,7 +9,7 @@
 
 //Implementation of Tangible Object Base Class
 
-namespace Astral{ namespace TangObj{
+namespace Xioudown{ namespace TangObj{
         
     TangibleObj::~TangibleObj(){
         delete p_boundaries;

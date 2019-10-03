@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <stdio.h>
 
-namespace Astral{ namespace Catalyst{ 
+namespace Xioudown{ namespace Catalyst{
 
     gameWindow::gameWindow(char* title, int SCREEN_WIDTH, int SCREEN_HEIGHT){
 

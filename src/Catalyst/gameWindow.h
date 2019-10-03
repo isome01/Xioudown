@@ -3,7 +3,7 @@
 #include <SDL_video.h>
 #include "../Math/polygon.h"
 
-namespace Astral{ namespace Catalyst{
+namespace Xioudown{ namespace Catalyst{
     
     class gameWindow{
         private:
@@ -15,7 +15,7 @@ namespace Astral{ namespace Catalyst{
             int frame_Count;
 
         public:
-            gameWindow(char* title = (char*)("Astral Engine Window"), int SCREEN_WIDTH = 960, int SCREEN_HEIGHT = 640);
+            gameWindow(char* title = (char*)("Xioudown Engine Window"), int SCREEN_WIDTH = 960, int SCREEN_HEIGHT = 640);
             ~gameWindow(){
                 SDL_DestroyRenderer(g_renderer);
                 g_renderer = NULL;

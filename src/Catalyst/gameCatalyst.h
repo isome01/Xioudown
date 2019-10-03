@@ -16,7 +16,7 @@
 
 using std::vector;
 
-namespace Astral{ namespace Catalyst {
+namespace Xioudown{ namespace Catalyst {
 
     using namespace TangObj;
 

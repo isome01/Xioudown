@@ -3,7 +3,7 @@
 
 #define log(x) std::cout << x << std::endl;
 
-namespace Astral{ namespace Math {
+namespace Xioudown{ namespace Math {
     //these functions comprise version 2 of our collision detection
     bool Polygon::inside(int vert_x , int vert_y){ //To find if a certain point is inside
         int vertex_1, vertex_2;

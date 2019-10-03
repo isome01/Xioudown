@@ -10,7 +10,7 @@
 #include "../Math/polygon.h"
 #include "game_actions.h"
 
-namespace Astral{ namespace ObjAction{
+namespace Xioudown{ namespace ObjAction{
     using namespace Essentials;
     using namespace Math;
     using TangObj::AnimatedObj;

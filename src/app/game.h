@@ -1,7 +1,7 @@
 #pragma once
 
 //Dependencies
-#include "../Astral.h"
+#include "../Xioudown.h"
 
 #include <stdlib.h>
 #include <iostream>
@@ -19,7 +19,7 @@ enum game_items {
 };
 #endif
 
-using namespace Astral;
+using namespace Xioudown;
 using namespace Catalyst;
 using namespace UI;
 

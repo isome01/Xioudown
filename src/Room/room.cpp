@@ -15,7 +15,7 @@ using std::vector;
 
 #define log(x) std::cout <<"Room Obj: from "<< __func__ << " " <<  x << std::endl;
 
-namespace Astral{ namespace Room{
+namespace Xioudown{ namespace Room{
 
     using namespace Catalyst;
     using namespace Essentials;

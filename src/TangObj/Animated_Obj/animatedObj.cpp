@@ -10,11 +10,11 @@
 #include <ctime>
 #include <stdlib.h>
 
-#ifndef Astral_Cat
-#define Astral_Cat Astral::Catalyst::gameCatalyst::gWorld()
+#ifndef Xioudown_Cat
+#define Xioudown_Cat Xioudown::Catalyst::gameCatalyst::gWorld()
 #endif
 
-namespace Astral{ namespace TangObj{
+namespace Xioudown{ namespace TangObj{
 
     using namespace Essentials;
 
@@ -267,7 +267,7 @@ namespace Astral{ namespace TangObj{
             if ( !this->getSprite()->getTexture() ){
 
                 //Try and set the texture again.
-                this->getSprite()->setTexture( Astral_Cat->getManager()->getTexture(0));
+                this->getSprite()->setTexture( Xioudown_Cat->getManager()->getTexture(0));
                 //log("Texture not loaded.")
                 return;
             }

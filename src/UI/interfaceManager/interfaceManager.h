@@ -12,7 +12,7 @@
 #include <string>
 #include <map>
 
-namespace Astral{ namespace UI{
+namespace Xioudown{ namespace UI{
 
     //non-static class: there will most likely be more than one set of interfaces
     class interfaceManager{

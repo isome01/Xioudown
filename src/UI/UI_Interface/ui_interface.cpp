@@ -8,11 +8,11 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-#ifndef ASTRAL_CAT
-#define ASTRAL_CAT Astral::Catalyst::gameCatalyst::gWorld()
+#ifndef Xioudown_CAT
+#define Xioudown_CAT Xioudown::Catalyst::gameCatalyst::gWorld()
 #endif
 
-namespace Astral { namespace UI { 
+namespace Xioudown { namespace UI {
 
     UI_Interface::UI_Interface(std::string _name) : interface_name(_name) {
         
@@ -83,7 +83,7 @@ namespace Astral { namespace UI {
             SDL_RenderDrawRect(r, &ui_obj_selector);
 
             //finally finally render the title
-            //SDL_Texture *t = ASTRAL_CAT->getManager()->getFontedTexture(r, (char*)"DENMARK", (char*) );
+            //SDL_Texture *t = Xioudown_CAT->getManager()->getFontedTexture(r, (char*)"DENMARK", (char*) );
 
         } else printf("Content list is empty.");
     }
