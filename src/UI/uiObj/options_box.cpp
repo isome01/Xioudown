@@ -4,11 +4,11 @@
 
 #include <SDL.h>
 
-#ifndef ASTRAL_CAT
-#define ASTRAL_CAT Astral::Catalyst::gameCatalyst::gWorld()
+#ifndef Xioudown_CAT
+#define Xioudown_CAT Xioudown::Catalyst::gameCatalyst::gWorld()
 #endif
 
-namespace Astral { namespace UI {
+namespace Xioudown { namespace UI {
 
     void Options_Box::renderUI(SDL_Renderer *r){
 
@@ -16,7 +16,7 @@ namespace Astral { namespace UI {
         SDL_RenderFillRect(r, this->getObjSurface() );
 
         //finally finally render the title
-        this->ui_obj_title->setTexture( ASTRAL_CAT->getManager()->getFontedTexture( r, this->getName(), {255, 255, 255} ) );
+        this->ui_obj_title->setTexture( Xioudown_CAT->getManager()->getFontedTexture( r, this->getName(), {255, 255, 255} ) );
         this->ui_obj_title->render(r, getObjSurface());
     }
 

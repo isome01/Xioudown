@@ -12,7 +12,7 @@
 #include <stdio.h> //for logging
 #include <vector> //list
 
-namespace Astral{ namespace UI {
+namespace Xioudown{ namespace UI {
     
     class UI_Interface{
         

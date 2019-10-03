@@ -6,11 +6,11 @@
 #include <stdio.h>
 #include <string>
 
-int Astral::UI::interfaceManager::ui_interface_count = 0;
+int Xioudown::UI::interfaceManager::ui_interface_count = 0;
 
-using namespace Astral::Essentials;
+using namespace Xioudown::Essentials;
 
-namespace Astral { namespace UI{
+namespace Xioudown { namespace UI{
 
     interfaceManager::interfaceManager(std::string name) {
 

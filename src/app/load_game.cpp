@@ -7,7 +7,7 @@
 //any other things required for the game ~~~ 
 int load_game(){
     //if initialially we weren't able to initialize properly.
-    if ( !Astral_Cat->gameStatusOK() ){
+    if ( !Xioudown_Cat->gameStatusOK() ){
         log("Gamestate unable to continue.")
         return -1;
     }
@@ -16,9 +16,9 @@ int load_game(){
     int lvl_count = 10;
 
     //This is where we will start the game and other things
-    Astral_Cat->setLevelCount(lvl_count);
-    Astral_Cat->setLevel(0);
-    Astral_Cat->setRoom(0);
+    Xioudown_Cat->setLevelCount(lvl_count);
+    Xioudown_Cat->setLevel(0);
+    Xioudown_Cat->setRoom(0);
 
     log("Generating levels");
     Room::Room **Levels = new Room::Room*[lvl_count]; //a reference holder for where we allocate our levels
@@ -35,7 +35,7 @@ int load_game(){
         //extract the list of levels and rooms generated from indexed level**
         std::vector<Room::Room*> *levels = Levels[i]->getRegistry();
 
-        Astral_Cat->addLeveltoRegistry(*levels);
+        Xioudown_Cat->addLeveltoRegistry(*levels);
         //resetRandom();
     }
 
@@ -59,9 +59,9 @@ int load_game(){
     player->addPlayerAssets( [](){ return; } );
 
     //add player to the catalyst
-    Astral_Cat->setPlayer(player);
+    Xioudown_Cat->setPlayer(player);
 
-    Astral_Cat->finalize();
+    Xioudown_Cat->finalize();
 
     return 0;
 }

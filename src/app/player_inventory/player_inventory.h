@@ -11,13 +11,13 @@ class Player_Inventory : public interfaceManager{
 
     private:
         char* player_name;
-        Astral::Container::Storage *player_inventory;
+        Xioudown::Container::Storage *player_inventory;
     
     public:
         Player_Inventory(char* _player_name) : player_name(_player_name), interfaceManager(){
             
             //initialize our storage space
-            player_inventory = new Astral::Container::Storage(4);
+            player_inventory = new Xioudown::Container::Storage(4);
         }
         ~Player_Inventory();
 

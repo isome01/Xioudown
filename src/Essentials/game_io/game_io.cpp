@@ -3,7 +3,7 @@
 #include "game_io.h"
 #include "../../Catalyst/gameCatalyst.h"
 
-namespace Astral{ namespace Essentials{ 
+namespace Xioudown{ namespace Essentials{
 
     gameIOController::gameIOController(bool keyboard, bool joystick) : 
         game_keyboard(keyboard), game_joystick(joystick) {

@@ -7,9 +7,9 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Action Classes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // - Actions resolved from animated objects as well as AoE Environment actions
 
-namespace Astral { namespace ObjAction{
+namespace Xioudown { namespace ObjAction{
 	
-	using namespace Astral::Essentials;
+	using namespace Xioudown::Essentials;
 
 	using Math::Polygon;
 	using namespace TangObj;

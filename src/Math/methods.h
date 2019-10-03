@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include "../Essentials/paradigm.h"
 
-namespace Astral { namespace Math{
+namespace Xioudown { namespace Math{
 
     //Helpful methods
     char *appendToString(char *a, char *b);

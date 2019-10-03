@@ -7,7 +7,7 @@
 #include <vector>
 using std::vector;
 
-namespace Astral { namespace Room {
+namespace Xioudown { namespace Room {
     class Lvl_Room : public Room{
     //A Lvl_Room "has a Lvl_Room_Sub
 

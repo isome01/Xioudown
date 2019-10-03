@@ -1,12 +1,12 @@
 //For testing
-#include "../Astral.h"
+#include "../Xioudown.h"
 #include "game.h"
 
 #include <stdlib.h>
 #include <iostream>
 #include <ctime>
 
-using namespace Astral;
+using namespace Xioudown;
 using namespace Catalyst;
 using namespace UI;
 
@@ -32,11 +32,11 @@ int main(int args, char *argv[]){
         } else {
             //Now to give the game a run
             if (load_game() >= 0){
-                while(Astral_Cat->g_gameState()){
+                while(Xioudown_Cat->g_gameState()){
 
                     //let these essentials be toward the end of the loop.
-                    Astral_Cat->renderEverything();
-                    Astral_Cat->processEvents();
+                    Xioudown_Cat->renderEverything();
+                    Xioudown_Cat->processEvents();
                 }
 
             } else {

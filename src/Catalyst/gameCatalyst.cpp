@@ -12,11 +12,11 @@
 #include "../Essentials/player/player.h"
 #include "../UI/uiObj/options_box.h"
 
-int Astral::Catalyst::gameCatalyst::gwTraversal = 0;
-const int SCREEN_WIDTH = Astral::Catalyst::gameCatalyst::gWorld()->getWindow()->getWidth();
-const int SCREEN_HEIGHT = Astral::Catalyst::gameCatalyst::gWorld()->getWindow()->getHeight();
+int Xioudown::Catalyst::gameCatalyst::gwTraversal = 0;
+const int SCREEN_WIDTH = Xioudown::Catalyst::gameCatalyst::gWorld()->getWindow()->getWidth();
+const int SCREEN_HEIGHT = Xioudown::Catalyst::gameCatalyst::gWorld()->getWindow()->getHeight();
 
-namespace Astral { namespace Catalyst{
+namespace Xioudown { namespace Catalyst{
 
     #ifndef LOG
     #define log(x) std::cout << "gameCatalyst: from " << __func__ << " " << x << std::endl;

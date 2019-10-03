@@ -7,7 +7,7 @@
 #include "../Animated_Obj/animatedObj.h"
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Wall Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace Astral{ namespace TangObj{
+namespace Xioudown{ namespace TangObj{
     void Wall::renderInanimateObj(SDL_Renderer *r){
 
         if (this->getPBoundaries()){

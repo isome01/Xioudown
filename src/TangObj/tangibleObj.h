@@ -9,7 +9,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tangible Objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //This defines the holistic view of whether an object is a physical object within the game: base class.
 
-namespace Astral{ namespace TangObj{
+namespace Xioudown{ namespace TangObj{
 
     using namespace Math;
     using namespace Essentials;

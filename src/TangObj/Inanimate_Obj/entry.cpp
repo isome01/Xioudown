@@ -10,7 +10,7 @@
 #define log(x) std::cout << "Entry obj " << x << std::endl;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Entry Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace Astral { namespace TangObj{
+namespace Xioudown { namespace TangObj{
 
 
     Entry::Entry(Direction d, int scaling, int x, int y, int rm, int lvl ) :

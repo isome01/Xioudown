@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <string>
 
-namespace Astral { namespace UI{ 
+namespace Xioudown { namespace UI{
 
     class Options_Box : public UI_Obj {
         

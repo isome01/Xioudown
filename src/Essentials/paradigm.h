@@ -5,11 +5,11 @@
 
 //~~~~~~~~~~ This header file contains enum and other arbitrary data-types
 
-namespace Astral { namespace Room{
+namespace Xioudown { namespace Room{
     class Room;
 };};
 
-namespace Astral { namespace Essentials{
+namespace Xioudown { namespace Essentials{
     class Action; //This is what each animated object will have, and will be instantiated upon inanimate item reactions
                 //(like item consumption)
     class Replenish; //An action based on healing effect

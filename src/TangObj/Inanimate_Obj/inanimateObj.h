@@ -4,7 +4,7 @@
 #include "../Animated_Obj/animatedObj.h"
 #include "../tangibleObj.h"
 
-namespace Astral { namespace TangObj{
+namespace Xioudown { namespace TangObj{
     //This is our abstract inanimate [base] class, which is also a tangible object within the game.
     class InanimateObj : public TangibleObj
     {

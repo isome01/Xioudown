@@ -9,12 +9,12 @@
 
 using std::vector;
 
-const int SCREEN_WIDTH = Astral::Catalyst::gameCatalyst::gWorld()->getWindow()->getWidth();
-const int SCREEN_HEIGHT = Astral::Catalyst::gameCatalyst::gWorld()->getWindow()->getHeight();
+const int SCREEN_WIDTH = Xioudown::Catalyst::gameCatalyst::gWorld()->getWindow()->getWidth();
+const int SCREEN_HEIGHT = Xioudown::Catalyst::gameCatalyst::gWorld()->getWindow()->getHeight();
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Storage implementation and methods ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-namespace Astral { namespace Container{
+namespace Xioudown { namespace Container{
 
     using namespace Math;
     using namespace TangObj;

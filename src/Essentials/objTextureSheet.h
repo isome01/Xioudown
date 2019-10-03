@@ -7,7 +7,7 @@
 #include "timer.h"
 #include "paradigm.h"
 
-namespace Astral { namespace Essentials{ 
+namespace Xioudown { namespace Essentials{
     class gwTexturePack{
     private:
         SDL_Texture *texture;

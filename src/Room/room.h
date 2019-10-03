@@ -15,7 +15,7 @@ using std::vector;
 //This room generates based off of the current difficulty of the game.
 
 
-namespace Astral { namespace Room{ 
+namespace Xioudown { namespace Room{
     
     using namespace Essentials;
 

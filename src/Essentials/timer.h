@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 
-namespace Astral{ namespace Essentials{
+namespace Xioudown{ namespace Essentials{
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Timer Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //The reason I made my own timer class is because SDL_Timer API and reference sucks shit to follow.
     class Timer{
