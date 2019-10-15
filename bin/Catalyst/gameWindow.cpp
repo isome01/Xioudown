@@ -6,7 +6,7 @@
 
 namespace Xioudown{ namespace Catalyst{
 
-    gameWindow::gameWindow(char* title, int SCREEN_WIDTH, int SCREEN_HEIGHT){
+    gameWindow::gameWindow(char* title, int SCREEN_WIDTH = 640, int SCREEN_HEIGHT = 480){
 
         init(SCREEN_WIDTH, SCREEN_HEIGHT, title);
 
