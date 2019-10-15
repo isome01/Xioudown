@@ -3,8 +3,8 @@ Start-Transcript
 
 
 [string[]]$matches = ""
-#[string]$compiler = "-I.\dependencies\sdl_dev_lib_mingw\include\SDL2"
-#[string]$dependencies = "-L.\dependencies\sdl_dev_lib_mingw\lib"
+#[string]$compiler = "-I.\lib\sdl_dev_lib_mingw\include\SDL2"
+#[string]$lib = "-L.\lib\sdl_dev_lib_mingw\lib"
 #[string]$linker = "-lmingw32 -lSDL2main -lSDL2_image -lSDL2_ttf -lSDL2"
 
 
@@ -35,10 +35,8 @@ Set-Location ..
 
 #Start Compiling
 
-
 Write-Output Compiling... 
-g++ $matches -Idependencies\sdl_dev_lib\include\SDL2 -Ldependencies\sdl_dev_lib\lib -lmingw32 -lSDL2main -lSDL2_image -lSDL2_ttf -lSDL2 -o bin/testing
-
+g++ $matches -Ilib\sdl_dev_lib\include\SDL2 -Llib\sdl_dev_lib\lib -lmingw32 -lSDL2main -lSDL2_image -lSDL2_ttf -lSDL2 -o bin/testing
 
 #Create shortcut to executable
 
