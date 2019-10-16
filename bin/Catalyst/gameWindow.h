@@ -40,6 +40,7 @@ namespace Xioudown{ namespace Catalyst{
 
             bool getStatus() { return (bool)(g_window != NULL); }
             bool aptToRender(SDL_Rect r);
+            bool aptToRender(int *p);
             bool aptToRender(Math::Polygon *p);
     };
 };};
