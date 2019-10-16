@@ -24,7 +24,7 @@ function copyLibsFromPath([string]$path = "") {
     #go through each item and copy appropriate files with .dll extension
     Get-ChildItem -Recurse -Path $path | Where-Object {
       [regex]::Matches($_.Name, ".dll$")
-    } | %{
+    } | ForEach-Object {
       [string]$resource = ($path + '\' + $_.Name)
       if (!(Test-Path($compPath + "\" + $_.Name))) {
         Copy-Item -Path $resource -Destination $compPath
@@ -119,9 +119,9 @@ function main () {
       Write-Output "Executable made; name is " $testDir ".exe"
 
       #Create shortcut to executable
-      Set-Location $testDirPath
+      $integOutput = ($integPath + '\' + $testDir)
       $Target = $compOutput + '.exe'
-      $Shortcut = ".\testing.lnk" #~ NOTE ~ Shortcuts are .lnk files
+      $Shortcut =  $integOutput + "\testing.lnk" #~ NOTE ~ Shortcuts are .lnk files
 
       $WScriptShell = New-Object -ComObject WScript.Shell
       $Shortcut = $WScriptShell.CreateShortcut($Shortcut)
