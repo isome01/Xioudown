@@ -21,6 +21,11 @@ namespace Xioudown { namespace Essentials{
 
     //static vector<Pathway*> DEFAULT_PATHS;
 
+    //For the sake of 
+    enum unitEssential {
+        inGame, gameConfig
+    };
+
     //The location of axis of which the object is moving
     enum Axis{
         X, Y
