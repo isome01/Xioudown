@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <iostream>
+#include <stdlib.h>
 
 //~~~~~~~~~~ This header file contains enum and other arbitrary data-types
 
@@ -10,6 +12,7 @@ namespace Xioudown { namespace Room{
 };};
 
 namespace Xioudown { namespace Essentials{
+
     class Action; //This is what each animated object will have, and will be instantiated upon inanimate item reactions
                 //(like item consumption)
     class Replenish; //An action based on healing effect

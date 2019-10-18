@@ -6,8 +6,9 @@
 #include "inanimateObj.h"
 #include "../../Catalyst/gameCatalyst.h"
 
-
+#ifndef log
 #define log(x) std::cout << "Entry obj " << x << std::endl;
+#endif
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Entry Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace Xioudown { namespace TangObj{

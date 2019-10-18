@@ -13,7 +13,9 @@
 
 using std::vector;
 
+#ifndef log
 #define log(x) std::cout <<"Room Obj: from "<< __func__ << " " <<  x << std::endl;
+#endif
 
 namespace Xioudown{ namespace Room{
 

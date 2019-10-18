@@ -18,7 +18,7 @@ const int SCREEN_HEIGHT = Xioudown::Catalyst::gameCatalyst::gWorld()->getWindow(
 
 namespace Xioudown { namespace Catalyst{
 
-    #ifndef LOG
+    #ifndef log
     #define log(x) std::cout << "gameCatalyst: from " << __func__ << " " << x << std::endl;
     #endif
     
@@ -34,7 +34,7 @@ namespace Xioudown { namespace Catalyst{
         } else {
 
             //Create game window 
-            game_window = new gameWindow("Testing", 1280, 960);
+            game_window = new gameWindow((char*)"Testing", 1280, 960);
             systems_go = game_window->getStatus();
 
             if (!systems_go){

@@ -6,7 +6,7 @@ bool load_fonts(){
     
     SDL_Renderer *r = Xioudown_Cat->getWindow()->getRenderer();
 
-    Xioudown_Cat->getManager()->LoadFont("./src/assets/ttf/Denmark.ttf", 14);
+    Xioudown_Cat->getManager()->LoadFont("./assets/ttf/Denmark.ttf", 14);
 
     if (!Xioudown_Cat->getManager()->fontLoaded()){
         printf("From %s: font not loaded.\n", __func__);

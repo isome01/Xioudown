@@ -11,6 +11,10 @@
 
 namespace Xioudown{ namespace TangObj{
 
+    #ifndef log
+    #define log(x) std::cout << "Tangible obj " << x << std::endl;
+    #endif
+
     using namespace Math;
     using namespace Essentials;
     /*using Essentials::tangibleObj;

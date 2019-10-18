@@ -9,7 +9,9 @@
 #include <stdlib.h>
 #include <iostream>
 
+#ifndef log
 #define log(x) std::cout <<"Pathway Obj: from "<< __func__ << " " << x << std::endl;
+#endif
 
 namespace Xioudown { namespace Room {
     using namespace Xioudown::TangObj;

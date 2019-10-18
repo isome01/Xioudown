@@ -6,8 +6,9 @@
 #include "../../ObjAction/game_actions.h"
 #include "../../Room/room.h"
 
-
+#ifndef log
 #define log(x) std::cout << "Player obj: " << x << std::endl;
+#endif
 
 namespace Xioudown{ namespace Essentials{
 

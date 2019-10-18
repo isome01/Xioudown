@@ -31,8 +31,8 @@ namespace Xioudown{ namespace ObjAction{
         //first determine the direction of the action
         SDL_Rect *r = a->getBoundaries();
 
-        short xs[4] = { r->x, r->x, r->x + (r->w * 2), r->x + (r->w * 2) };
-        short ys[4] = { r->y + (r->h * 2), r->y, r->y, r->y + (r->h * 2) };
+        int xs[4] = { r->x, r->x, r->x + (r->w * 2), r->x + (r->w * 2) };
+        int ys[4] = { r->y + (r->h * 2), r->y, r->y, r->y + (r->h * 2) };
 
         this->setAOE( new Polygon(xs, ys, 4) );
 

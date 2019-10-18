@@ -14,6 +14,10 @@ namespace Xioudown { namespace ObjAction{
 	using Math::Polygon;
 	using namespace TangObj;
 
+	#ifndef log
+	#define log(x) std::cout << x << std::endl;
+	#endif
+
 	class Action{
 
     private:

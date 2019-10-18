@@ -5,8 +5,6 @@
 #include "../Math/polygon.h"
 #include "./tangibleObj.h"
 
-#define log(x) std::cout << "Tangible obj " << x << std::endl;
-
 //Implementation of Tangible Object Base Class
 
 namespace Xioudown{ namespace TangObj{

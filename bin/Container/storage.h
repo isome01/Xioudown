@@ -10,6 +10,10 @@
 //An item storage for any animated object; Will be used for inventory and item equip.
 namespace Xioudown {namespace Container{
     using std::vector;
+
+    #ifndef log
+    #define log(x) std::cout << x << std::endl;
+    #endif
     
     class Storage{
 

@@ -26,7 +26,7 @@ namespace Xioudown { namespace Room{
 
         private:
             //Default sidewalk length and width is 500
-            int width, height;
+            short width, height;
 
             int w_count;
             SDL_Rect walkway;

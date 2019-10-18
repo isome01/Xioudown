@@ -5,11 +5,11 @@
 #endif
 
 //This is the interface of our engine.
-
+#include "../../bin/Essentials/paradigm.h"
 #include "../../bin/Essentials/game_io/game_io.h"
 #include "../../bin/Essentials/timer.h"
-#include "../../bin/Essentials/paradigm.h"
 #include "../../bin/Essentials/textureManager.h"
+#include "../../bin/Essentials/Vectors/vector.h"
 
 #include "../../bin/UI/uiObj/uiObj.h" //UI for the player to interact with
 
@@ -45,7 +45,8 @@
 
 //For the sake of usability, let's create a shortcut for the catalyst/singleton 
 #ifndef Xioudown_Cat
-
+using namespace Xioudown;
+using namespace Catalyst;
 //define catalyst instantiator
 #define Inst_Catalyst(inst) gameCatalyst* gameCatalyst::world = inst
 
