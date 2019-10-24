@@ -17,6 +17,10 @@ int main (int argc, char *argv[]) {
   cout << "Vector v: (" << v->x() << ", " << v->y() << ")" << endl;
   cout << "Vector w: (" << w->x() << ", " << w->y() << ")" << endl;
 
+  *v = *v + w;
+
+  cout << "Vector v after sum: (" << v->x() << ", " << v->y() << ")" << endl;
+
   STANDBY;
   return EXIT_SUCCESS;
 }

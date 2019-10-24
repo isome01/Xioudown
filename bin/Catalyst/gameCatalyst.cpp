@@ -69,7 +69,9 @@ namespace Xioudown { namespace Catalyst{
             return false;
         } if ( !TTF_Init() < 0) {
             printf("Error %s", TTF_GetError());
-        } else return true;
+            return false;
+        }
+        return true;
     }
 
     bool gameCatalyst::finalize(){
