@@ -79,9 +79,10 @@ namespace Xioudown { namespace Catalyst{
         bool tis_final = false;
 
         tis_final = systems_go;
-        connectLevelEntries();
-        scrollToPlayer(); //scroll everything to center player
-
+        log("systems...")
+        //connectLevelEntries();
+        //scrollToPlayer(); //scroll everything to center player
+        log("... go.")
         log("Scrolls to player.")
         gameState = true; //set gamestate = true
         
@@ -91,7 +92,7 @@ namespace Xioudown { namespace Catalyst{
     gameCatalyst::~gameCatalyst(){
 
         //delete texture_manager;
-        delete game_window;
+        if (game_window) delete game_window;
 
         /* this is an object of non-polymorphic class: deleting this might cause undefined behavior
         delete test_room;*/
@@ -104,7 +105,7 @@ namespace Xioudown { namespace Catalyst{
 
         if (test_room)
             delete test_room;
-
+            
         SDL_Quit();
         IMG_Quit();
         TTF_Quit();
@@ -203,7 +204,7 @@ namespace Xioudown { namespace Catalyst{
         //Rendering everything in the entire room - as the room will call the render functions for all
         //tangible objects - excluding the player.
 
-        getCurrentLevel()->renderRoom(game_window->getRenderer());
+        if (getCurrentLevel() != NULL) getCurrentLevel()->renderRoom(game_window->getRenderer());
 
         //log("Rendered level")
 
@@ -230,9 +231,9 @@ namespace Xioudown { namespace Catalyst{
         //Depending on the direction, we scroll everything in the room opposite to the player, one by one.
         AnimatedObj *player_obj = gWorld()->player->getAnimatedObj();//Player
         if ( dir == UP || dir == DOWN){
-            player_obj->setY( player_obj->getY() + y_steps );
+            player_obj->y( player_obj->y() + y_steps );
         } else if (dir == LEFT || dir == RIGHT){
-            player_obj->setX( player_obj->getX() + x_steps );
+            player_obj->x( player_obj->x() + x_steps );
         }
     }
 
@@ -240,8 +241,8 @@ namespace Xioudown { namespace Catalyst{
     void gameCatalyst::scrollToPlayer(){
 
         gwCoordinates p;
-        p.x = player->getAnimatedObj()->getX();
-        p.y = player->getAnimatedObj()->getY();
+        p.x = player->getAnimatedObj()->x();
+        p.y = player->getAnimatedObj()->y();
         AnimatedObj *plyr = player->getAnimatedObj();
 
         int d_x = abs( (SCREEN_WIDTH / 2) - p.x );
@@ -252,22 +253,22 @@ namespace Xioudown { namespace Catalyst{
         //for both x...
         if (p.x < centerX ) {
             this->getCurrentLevel()->xyScroll( d_x, RIGHT);
-            plyr->setX( d_x + p.x );
+            plyr->x( d_x + p.x );
 
         } else if(p.x > centerX) {
             this->getCurrentLevel()->xyScroll( -1 * (d_x), LEFT);
-            plyr->setX( -1 * (d_x) + p.x);
+            plyr->x( -1 * (d_x) + p.x);
         }
 
 
         //and y: of everything in the room.
         if (p.y < centerY) {
             this->getCurrentLevel()->xyScroll( (d_y), DOWN);
-            plyr->setY( (d_y) + p.y );
+            plyr->y( (d_y) + p.y );
 
         } else if(p.y > centerY) {
             this->getCurrentLevel()->xyScroll(-1 * (d_y), UP);
-            plyr->setY( -1 * (d_y) + p.y  );
+            plyr->y( -1 * (d_y) + p.y  );
         }
     }
 
@@ -299,8 +300,8 @@ namespace Xioudown { namespace Catalyst{
                 log("Object not copied. There was an error.")
             } else {
                 log("about to set xyplace")
-                a->setX(queued_entry->get_xplace());
-                a->setY(queued_entry->get_yplace());
+                a->x(queued_entry->get_xplace());
+                a->y(queued_entry->get_yplace());
                 log("Sets xyplace")
 
                 log("about to access next room")
@@ -353,8 +354,8 @@ namespace Xioudown { namespace Catalyst{
 
             //if the player enters the room, then there is transition between rooms.
             if (!queued_aobj->isCOMPlayer()){
-                queued_aobj->setX(queued_entry->get_xplace());
-                queued_aobj->setY(queued_entry->get_yplace());
+                queued_aobj->x(queued_entry->get_xplace());
+                queued_aobj->y(queued_entry->get_yplace());
                 current_room = rm_change.x;
                 current_lvl = rm_change.y;
 

@@ -27,7 +27,7 @@ namespace Xioudown{ namespace TangObj{
     using Essentials::gwCoordinates;
     using Essentials::Timer;*/
 
-    class TangibleObj{
+    class TangibleObj : {
     private:
         tangibleObj objType; //The yield for what type of object our tangible object is.
         Math::Polygon *p_boundaries; //The physical square/rectangle boundary lines
@@ -75,16 +75,16 @@ namespace Xioudown{ namespace TangObj{
         void setDirection(Direction dir){ direction = dir; }
 
         //Robust getters and setters for our SDL_Rect/boundaries and alpha
-        void setX(int n);
-        int getX()const;
-        void setY(int n);
-        int getY()const;
+        void x(int n);
+        int x()const;
+        void y(int n);
+        int y()const;
         gwCoordinates getCenter();
 
-        void setH(int n) { boundaries.h = n; }
-        int getH()const{ return boundaries.h; }
-        void setW(int n) { boundaries.w = n; }
-        int getW()const{ return boundaries.w; }
+        void h(int n) { boundaries.h = n; }
+        int h()const{ return boundaries.h; }
+        void w(int n) { boundaries.w = n; }
+        int w()const{ return boundaries.w; }
         void setA(int a) { obj_rgba.a = a; }
         int getA() const{ return obj_rgba.a; }
         void setRGB(int r, int g, int b){ obj_rgba.r = r; obj_rgba.g = g; obj_rgba.b = b; }

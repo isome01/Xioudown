@@ -27,13 +27,13 @@ namespace Xioudown{ namespace TangObj{
 
         //We set the object at the same amount of steps the object has taken
         if (dir == DOWN){
-            a->setY( a->getY() - steps);
+            a->y( a->y() - steps);
         } else if (dir == RIGHT){
-            a->setX( a->getX() - steps);
+            a->x( a->x() - steps);
         } else if (dir == LEFT){
-            a->setX( steps + a->getX());
+            a->x( steps + a->x());
         } else if ( dir == UP ){
-            a->setY( steps + a->getY());
+            a->y( steps + a->y());
         } else log("Invalid direction")
     }
 

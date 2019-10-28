@@ -25,9 +25,12 @@ namespace Xioudown { namespace Essentials{
     //static vector<Pathway*> DEFAULT_PATHS;
 
     //For the sake of 
-    enum unitEssential {
+    enum EssentialUnit {
         inGame, gameConfig
     };
+
+    class GridUnit;
+    class Grid;
 
     //The location of axis of which the object is moving
     enum Axis{
@@ -69,10 +72,6 @@ namespace Xioudown { namespace Essentials{
         RANGED_ACTION,
         SPELL_ACTION,
         REPLENISH, TOXIFY, HEMORRHAGE,
-    };
-
-    enum elementType{
-        BASE, FIRE, ICE, ELECTRICITY, DIVINE, NECROTIC,
     };
 
     struct gwCoordinates{

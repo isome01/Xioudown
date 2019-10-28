@@ -26,7 +26,7 @@ namespace Xioudown{ namespace ObjAction{
     }
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Melee Action Methods ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    MeleeAction::MeleeAction(AnimatedObj *a) : Action(MELEE, BASE, a->getDirection(), 2000){
+    MeleeAction::MeleeAction(AnimatedObj *a) : Action(MELEE, a->getDirection(), 2000){
 
         //first determine the direction of the action
         SDL_Rect *r = a->getBoundaries();

@@ -21,8 +21,8 @@ namespace Xioudown { namespace TangObj {
 
                 idle_timer = new Timer();
                 setCOMPlayer(COM_flag);
-                setX(-1);
-                setY(-1);
+                x(-1);
+                y(-1);
 
                 attack_cooldown = new Timer();
             }

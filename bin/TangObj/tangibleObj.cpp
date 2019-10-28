@@ -14,26 +14,26 @@ namespace Xioudown{ namespace TangObj{
     }
 
     //if polygon boundaries exist for this object -
-    void TangibleObj::setX(int n){
+    void TangibleObj::x(int n){
 
         if (p_boundaries)
             p_boundaries->X(n);
         else boundaries.x = n;
     }
-    int TangibleObj::getX()const{
+    int TangibleObj::x()const{
 
         if (p_boundaries)
             return 0;
 
         return boundaries.x;
     }
-    void TangibleObj::setY(int n){
+    void TangibleObj::y(int n){
 
         if (p_boundaries)
             p_boundaries->Y(n);
         else boundaries.y = n;
     }
-    int TangibleObj::getY()const{
+    int TangibleObj::y()const{
 
         if (p_boundaries)
             return 0;
