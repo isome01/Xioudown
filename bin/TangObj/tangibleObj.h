@@ -27,7 +27,7 @@ namespace Xioudown{ namespace TangObj{
     using Essentials::gwCoordinates;
     using Essentials::Timer;*/
 
-    class TangibleObj : {
+    class TangibleObj {
     private:
         tangibleObj objType; //The yield for what type of object our tangible object is.
         Math::Polygon *p_boundaries; //The physical square/rectangle boundary lines
