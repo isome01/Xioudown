@@ -1,5 +1,5 @@
 #include "grid.h"
-#include "paradigm.h"
+#include "../paradigm.h"
 
 namespace Xioudown { namespace Essentials {
   int Grid::m_grid_count = 0;
