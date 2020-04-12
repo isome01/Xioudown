@@ -12,4 +12,6 @@ DOES NOT compile with libraries 32-bit or lower. It's therefore recommended to j
 minimal dependencies that Xioudown compiles with (and any other third-party libraries you may be
 using) installed before compiling.
 
+link to download mingw64 is https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/
+
 Enjoy :D

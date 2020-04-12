@@ -41,6 +41,7 @@
 #include "../../bin/Room/Level/level.h"
 
 #include "../../bin/Catalyst/gameCatalyst.h"
+#include "../../bin/Essentials/Grid/grid.h"
 
 
 //For the sake of usability, let's create a shortcut for the catalyst/singleton 

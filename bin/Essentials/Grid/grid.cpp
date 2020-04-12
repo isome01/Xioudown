@@ -22,6 +22,10 @@ namespace Xioudown { namespace Essentials {
   int GridUnit::x () const { return 0; }
   void GridUnit::x (int n) { }
   
+  int GridUnit::y () const { return 0; }
+  void GridUnit::y (int n) { };
+  
+  int GridUnit::getCenter() { return 0; }
   /*
   * ~~~~~~~~~~~~~~~~~~~~
   *  Grid implementation
@@ -44,6 +48,6 @@ namespace Xioudown { namespace Essentials {
 
   }
 
-  int Grid::gridSteps() const{}
+  int Grid::gridSteps() const{ return 0; }
   void Grid::gridSteps(int n) {}
 };};
