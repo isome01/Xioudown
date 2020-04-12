@@ -4,7 +4,9 @@
 #include <iostream>
 #include <SDL.h>
 
+#ifndef log
 #define log(x) std::cout << "Lvl Room Sub: from "<< __func__ << " " << x << std::endl;
+#endif
 
 namespace Xioudown { namespace Room{
 

@@ -15,7 +15,9 @@ namespace Xioudown { namespace Room{
         
     using namespace TangObj;
 
+    #ifndef log
     #define log(x) std::cout << "Level object: " << x << std::endl;
+    #endif
 
     Level::Level(int n) : Room(vector<Pathway*>(), n), difficulty(n), grid_scaling(700) {
 

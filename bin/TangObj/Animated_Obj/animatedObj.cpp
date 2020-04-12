@@ -41,22 +41,22 @@ namespace Xioudown{ namespace TangObj{
         }
 
         //For the sake of the player we take a count of whether the player moved 0 - n amount of frames: for each x and y
-        int pre_x = getX();
-        int pre_y = getY();
+        int pre_x = x();
+        int pre_y = y();
 
         //If it's a negative direction (up or left)
         if (dir == UP)
-            setY(getY() - stepCount); //the object moves up x amount of steps
+            y(y() - stepCount); //the object moves up x amount of steps
 
         if (dir == LEFT)
-            setX(getX() - stepCount); //the object moves left x amount of steps
+            x(x() - stepCount); //the object moves left x amount of steps
 
         //Or if it's a positive direction
         if (dir == DOWN)
-            setY(getY() + stepCount); //the object moves down x amount of steps
+            y(y() + stepCount); //the object moves down x amount of steps
 
         if (dir == RIGHT)
-            setX(getX() + stepCount); //the object moves right x amount of steps
+            x(x() + stepCount); //the object moves right x amount of steps
 
         //Now we see if the object is colliding with any of the animated objects within the game, if any animated objects.
         if (room->processCollisions(this)){
@@ -66,8 +66,8 @@ namespace Xioudown{ namespace TangObj{
         }
 
         //the amount of steps taken will be recorded
-        steps_taken_x = (pre_x - getX());
-        steps_taken_y = (pre_y - getY());
+        steps_taken_x = (pre_x - x());
+        steps_taken_y = (pre_y - y());
     }
 
     //A decision attribute for all COM player animated objects.
@@ -125,8 +125,8 @@ namespace Xioudown{ namespace TangObj{
         AnimatedObj::setSpawned(false);
 
         //for rasterizing/rendering to SDL_Rect
-        setW(50);
-        setH(50);
+        w(50);
+        h(50);
 
         //Creating healthbar for knight
         this->HpBar()->hp_bar_cur = new SDL_Rect;
@@ -172,10 +172,10 @@ namespace Xioudown{ namespace TangObj{
         if (this->HpBar()->hp_bar_max && this->HpBar()->hp_bar_cur){
 
             //start drawing the position of the bar
-            this->HpBar()->hp_bar_max->x = this->getX() + ((this->getBoundaries()->w - this->HpBar()->hp_bar_max->w) / 2);
-            this->HpBar()->hp_bar_max->y = this->getY() - 40;
+            this->HpBar()->hp_bar_max->x = this->x() + ((this->getBoundaries()->w - this->HpBar()->hp_bar_max->w) / 2);
+            this->HpBar()->hp_bar_max->y = this->y() - 40;
             this->HpBar()->hp_bar_cur->x = this->HpBar()->hp_bar_max->x;
-            this->HpBar()->hp_bar_cur->y = this->getY() - 40;
+            this->HpBar()->hp_bar_cur->y = this->y() - 40;
 
             //Then determine the length of the bar for UI
             this->HpBar()->hp_bar_cur->w = ( double(this->getHp() / this->getHpLimit()) * double(this->HpBar()->hp_bar_max->w) );
@@ -196,13 +196,13 @@ namespace Xioudown{ namespace TangObj{
         int steps = a->getSpd() + a->getStepCount();
 
         if (dir == DOWN){
-            a->setY( a->getY() - steps);
+            a->y( a->y() - steps);
         } else if (dir == RIGHT){
-            a->setX( a->getX() - steps);
+            a->x( a->x() - steps);
         } else if (dir == LEFT){
-            a->setX( steps + a->getX());
+            a->x( steps + a->x());
         } else if ( dir == UP ){
-            a->setY( steps + a->getY());
+            a->y( steps + a->y());
         } else log("Invalid direction")
         */
     }
@@ -223,8 +223,8 @@ namespace Xioudown{ namespace TangObj{
         setA(0);
         AnimatedObj::setSpawned(false);
         //Creating the size of our normal man avatar
-        setW(150);
-        setH(120);
+        w(150);
+        h(120);
 
         //Hp bar for normal man
         this->HpBar()->hp_bar_cur = new SDL_Rect;
@@ -280,10 +280,10 @@ namespace Xioudown{ namespace TangObj{
         if (this->HpBar()->hp_bar_max && this->HpBar()->hp_bar_cur){
 
             //start drawing the position of the bar
-            this->HpBar()->hp_bar_max->x = this->getX() + ((this->getBoundaries()->w - this->HpBar()->hp_bar_max->w) / 2);
-            this->HpBar()->hp_bar_max->y = this->getY() - 40;
+            this->HpBar()->hp_bar_max->x = this->x() + ((this->getBoundaries()->w - this->HpBar()->hp_bar_max->w) / 2);
+            this->HpBar()->hp_bar_max->y = this->y() - 40;
             this->HpBar()->hp_bar_cur->x = this->HpBar()->hp_bar_max->x;
-            this->HpBar()->hp_bar_cur->y = this->getY() - 40;
+            this->HpBar()->hp_bar_cur->y = this->y() - 40;
 
             //Then determine the length of the bar for UI
             this->HpBar()->hp_bar_cur->w = ( double(double(this->getHp()) / double(this->getHpLimit()) ) * double(this->HpBar()->hp_bar_max->w) );
@@ -304,13 +304,13 @@ namespace Xioudown{ namespace TangObj{
         int steps = a->getSpd() + a->getStepCount();
 
         if (dir == DOWN){
-            a->setY( a->getY() - steps);
+            a->y( a->y() - steps);
         } else if (dir == RIGHT){
-            a->setX( a->getX() - steps);
+            a->x( a->x() - steps);
         } else if (dir == LEFT){
-            a->setX( steps + a->getX());
+            a->x( steps + a->x());
         } else if ( dir == UP ){
-            a->setY( steps + a->getY());
+            a->y( steps + a->y());
         } else log("Invalid direction")*/
     }
 };};

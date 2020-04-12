@@ -14,19 +14,22 @@ namespace Xioudown { namespace ObjAction{
 	using Math::Polygon;
 	using namespace TangObj;
 
+	#ifndef log
+	#define log(x) std::cout << x << std::endl;
+	#endif
+
 	class Action{
 
     private:
 
 		Polygon* AOE_of_action;
 		Timer *execution_ttl;
-		elementType element;
 		actionType action_type;
 		Uint32 cooldown;
 		Essentials::Direction dir;
 
     public:
-        Action(actionType t, elementType e = BASE, Direction d = UP, int ttl = 0) : action_type(t), element(e), dir(d), cooldown(0) {
+        Action(actionType t, Direction d = UP, int ttl = 0) : action_type(t), dir(d), cooldown(0) {
             //if the timer has not been instantiated then we will do that. It will not be overwritten.
             execution_ttl = new Essentials::Timer();
             execution_ttl->startTimer(ttl);

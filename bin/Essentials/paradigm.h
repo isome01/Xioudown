@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <iostream>
+#include <stdlib.h>
 
 //~~~~~~~~~~ This header file contains enum and other arbitrary data-types
 
@@ -10,6 +12,7 @@ namespace Xioudown { namespace Room{
 };};
 
 namespace Xioudown { namespace Essentials{
+
     class Action; //This is what each animated object will have, and will be instantiated upon inanimate item reactions
                 //(like item consumption)
     class Replenish; //An action based on healing effect
@@ -20,6 +23,14 @@ namespace Xioudown { namespace Essentials{
     class Apparrel; //a child class that is an inanimate object
 
     //static vector<Pathway*> DEFAULT_PATHS;
+
+    //For the sake of 
+    enum EssentialUnit {
+        inGame, gameConfig
+    };
+
+    class GridUnit;
+    class Grid;
 
     //The location of axis of which the object is moving
     enum Axis{
@@ -61,10 +72,6 @@ namespace Xioudown { namespace Essentials{
         RANGED_ACTION,
         SPELL_ACTION,
         REPLENISH, TOXIFY, HEMORRHAGE,
-    };
-
-    enum elementType{
-        BASE, FIRE, ICE, ELECTRICITY, DIVINE, NECROTIC,
     };
 
     struct gwCoordinates{

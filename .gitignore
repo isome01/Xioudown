@@ -1,3 +1,4 @@
 *.exe
 .vscode
-.lnk
+*.lnk
+source_files.txt

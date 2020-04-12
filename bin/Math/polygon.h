@@ -9,8 +9,6 @@
 
 #include <iostream>
 
-#define log(x) std::cout << x << std::endl;
-
 namespace Xioudown{ namespace Math {
     
     class Polygon{
@@ -60,6 +58,19 @@ namespace Xioudown{ namespace Math {
                 for (int i = 0; i < vertices; i++){
                     x[i] = _x[i];
                     y[i] = _y[i];
+                }
+
+            }
+
+            /* for the sake of SDL_Rect conversion */
+            Polygon(const int *_x, const int *_y, int p) : vertices(p) {
+
+                //plain and simple.
+                x = new short[vertices];
+                y = new short[vertices];
+                for (int i = 0; i < vertices; i++){
+                    x[i] = (int)_x[i];
+                    y[i] = (int)_y[i];
                 }
 
             }

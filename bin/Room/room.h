@@ -26,7 +26,7 @@ namespace Xioudown { namespace Room{
 
         private:
             //Default sidewalk length and width is 500
-            int width, height;
+            short width, height;
 
             int w_count;
             SDL_Rect walkway;
@@ -83,10 +83,10 @@ namespace Xioudown { namespace Room{
             ~InhabitableSpace() { delete space;}
 
             //Getters and (no setters)
-            const int getX() const{ return space->x; }
-            const int getY() const{ return space->y; }
-            const int getW() const{ return space->w; }
-            const int getH() const{ return space->h; }
+            const int x() const{ return space->x; }
+            const int y() const{ return space->y; }
+            const int w() const{ return space->w; }
+            const int h() const{ return space->h; }
             SDL_Rect *getSpace() const{ return space; }
             void render();
     };

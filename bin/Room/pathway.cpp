@@ -9,7 +9,9 @@
 #include <stdlib.h>
 #include <iostream>
 
+#ifndef log
 #define log(x) std::cout <<"Pathway Obj: from "<< __func__ << " " << x << std::endl;
+#endif
 
 namespace Xioudown { namespace Room {
     using namespace Xioudown::TangObj;
@@ -33,26 +35,26 @@ namespace Xioudown { namespace Room {
 
             if ( dirs[i] == UP ){
 
-                short xs[2] = {(short)walkway.x, (short)walkway.x + width};
+                short xs[2] = {(short)walkway.x, ((short)(walkway.x + width))};
                 short ys[2] = {(short)walkway.y, (short)walkway.y};
                 walls.push_back( new Wall(xs, ys) );
 
             } else if( dirs[i] == DOWN){
 
-                short xs[2] = {(short)walkway.x, (short)walkway.x + width};
-                short ys[2] = {(short)walkway.y + height, (short)walkway.y + height};
+                short xs[2] = {(short)walkway.x, (short)(walkway.x + width)};
+                short ys[2] = {(short)(walkway.y + height), (short)(walkway.y + height)};
                 walls.push_back( new Wall(xs, ys));
 
             } else if ( dirs[i] == LEFT ){
 
                 short xs[2] = {(short)walkway.x, (short)walkway.x };
-                short ys[2] = {(short)walkway.y, (short)walkway.y + walkway.h};
+                short ys[2] = {(short)walkway.y, (short)(walkway.y + walkway.h)};
                 walls.push_back( new Wall(xs, ys));
 
             } else if ( dirs[i] == RIGHT ){
 
-                short xs[2] = { (short)walkway.x + width, (short)walkway.x + width};
-                short ys[2] = { (short)walkway.y, (short)walkway.y + walkway.h};
+                short xs[2] = { (short)(walkway.x + width), (short)(walkway.x + width)};
+                short ys[2] = { (short)walkway.y, (short)(walkway.y + walkway.h)};
                 walls.push_back( new Wall(xs, ys));
 
             } else{

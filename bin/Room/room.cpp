@@ -13,7 +13,9 @@
 
 using std::vector;
 
+#ifndef log
 #define log(x) std::cout <<"Room Obj: from "<< __func__ << " " <<  x << std::endl;
+#endif
 
 namespace Xioudown{ namespace Room{
 
@@ -106,13 +108,13 @@ namespace Xioudown{ namespace Room{
     void Room::Collision(TangibleObj* obj, Direction dir, int steps){
         //We set the object at the same amount of steps the object has taken
         if (dir == DOWN){
-            obj->setY((-1 * steps) + obj->getY());
+            obj->y((-1 * steps) + obj->y());
         } else if (dir == RIGHT){
-            obj->setX((-1 * steps) + obj->getX());
+            obj->x((-1 * steps) + obj->x());
         } else if (dir == LEFT){
-            obj->setX(steps + obj->getX());
+            obj->x(steps + obj->x());
         } else if (dir == UP){
-            obj->setY(steps + obj->getY());
+            obj->y(steps + obj->y());
         } else {
             log("Invalid direction")
         }
@@ -132,18 +134,18 @@ namespace Xioudown{ namespace Room{
             for (int i = 0; i < a_sz; i++){
                 AnimatedObj *a = avatars[i];
                 if (a)
-                    a->setY( a->getY() + steps);
+                    a->y( a->y() + steps);
                 else log("Cannot scroll undefined animated object")
             }
             //same for structures
             for (int i = 0; i < ia1_sz; i++){
                 InanimateObj *ia = structures[i];
-                ia->setY( ia->getY() + steps );
+                ia->y( ia->y() + steps );
             }
             //same for items on the ground
             for (int i = 0; i < ia2_sz; i++){
                 InanimateObj *ia = items[i];
-                ia->setY( ia->getY() + steps );
+                ia->y( ia->y() + steps );
             }
             if (spaces != NULL){
                 for (int i = 0; i < this->getZoneCount(); i++ ){
@@ -157,17 +159,17 @@ namespace Xioudown{ namespace Room{
             for (int i = 0; i < a_sz; i++){
                 AnimatedObj *a = avatars[i];
                 if (a)
-                    a->setX( a->getX() + steps);
+                    a->x( a->x() + steps);
                 else log("Cannot scroll undefined animated object")
             }
 
             for (int i = 0; i < ia1_sz; i++){
                 InanimateObj *ia = structures[i];
-                ia->setX( ia->getX() + steps );
+                ia->x( ia->x() + steps );
             }
             for (int i = 0; i < ia2_sz; i++){
                 InanimateObj *ia = items[i];
-                ia->setX( ia->getX() + steps );
+                ia->x( ia->x() + steps );
             }
 
             //scrolling inhabitable zone/spaces if they exist
@@ -365,8 +367,8 @@ namespace Xioudown{ namespace Room{
         gwCoordinates coords = g_rand_coords_from_Rect(*space);
 
         //The location where the object spawns
-        a->setX(coords.x);
-        a->setY(coords.y);
+        a->x(coords.x);
+        a->y(coords.y);
         a->setStepCount(rand()%10);
         a->setObjNum( this->RegisterObj() ) ; //Then we set the object number
         a->setDirection(this->getDirection(rand()%4));
@@ -389,8 +391,8 @@ namespace Xioudown{ namespace Room{
                 {
                     coords = g_rand_coords_from_Rect(*space);
                     //Then we give the animated object new coordinates
-                    avatars[obj_c]->setX(coords.x);
-                    avatars[obj_c]->setY(coords.y);
+                    avatars[obj_c]->x(coords.x);
+                    avatars[obj_c]->y(coords.y);
                     break; //then go back to the while loop and start the cases again.
                 }
 

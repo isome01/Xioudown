@@ -6,8 +6,9 @@
 #include "inanimateObj.h"
 #include "../../Catalyst/gameCatalyst.h"
 
-
+#ifndef log
 #define log(x) std::cout << "Entry obj " << x << std::endl;
+#endif
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Entry Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 namespace Xioudown { namespace TangObj{
@@ -85,14 +86,14 @@ namespace Xioudown { namespace TangObj{
             //Then change the location of the object that touched the entry to be side-by-side the entry
 
             log("Gets here...")
-            a->setX(e->get_xplace());
-            a->setY(e->get_yplace());
+            a->x(e->get_xplace());
+            a->y(e->get_yplace());
 
-            log("Other X: " << e->getX())
-            log("Other Y: " << e->getY())
+            log("Other X: " << e->x())
+            log("Other Y: " << e->y())
 
-            log( "Obj The X: "<< a->getX() << "\nThe Y: " << a->getY() )
-            log( "Entry The X: "<< e->getX() << "\nThe Y: " << e->getY() )
+            log( "Obj The X: "<< a->x() << "\nThe Y: " << a->y() )
+            log( "Entry The X: "<< e->x() << "\nThe Y: " << e->y() )
             log( "\nThe Level: " << e->get_lvl() << "\nThe Room: " << e->get_room())
         } else log("Entry not found");
     }

@@ -4,8 +4,9 @@
 #include "../../Catalyst/gameCatalyst.h"
 #include "level_room.h"
 
+#ifndef log
 #define log(x) std::cout << "Lvl Room: from "<< __func__ << " " << x << std::endl;
-
+#endif
 namespace Xioudown { namespace Room {
     
     using namespace TangObj;
@@ -23,7 +24,7 @@ namespace Xioudown { namespace Room {
 
         //log("Making file")
         //std::string outfile = ;
-        char* of = "C:/Users/Micha/Documents/CodeBlocks Projects/Game World/Levels/LEVEL_ROOM.txt";
+        char* of = (char*)"C:/Users/Micha/Documents/CodeBlocks Projects/Game World/Levels/LEVEL_ROOM.txt";
 
         std::ofstream fout(of);
         for (int r = 0; r < guide_sz_y; r++){
