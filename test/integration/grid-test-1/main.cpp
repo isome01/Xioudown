@@ -1,3 +1,4 @@
+#include "../../../lib/rapidxml-1.13/rapidxml.hpp"
 #include "../../../include/Xioudown/Xioudown.h"
 #include <stdlib.h>
 #include <iostream>
@@ -11,6 +12,8 @@ Inst_Catalyst(NULL);
 using namespace Essentials;
 using std::cout;
 using std::endl;
+
+using namespace rapidxml;
 
 int main (int argc, char *argv[]) {
 
@@ -45,7 +48,7 @@ int main (int argc, char *argv[]) {
       }*/
     }
   }
-  
+
   STANDBY;
   return EXIT_SUCCESS;
 }
