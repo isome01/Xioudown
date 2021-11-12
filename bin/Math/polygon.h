@@ -39,11 +39,11 @@ namespace Xioudown{ namespace Math {
 
 
             //Exclusively for line generation
-            short thicken_line(const short a, const short b, int thickness){
+            short thickenLine(const short a, const short b, int thickness){
                 return ( a <= b )?(a-thickness):(a+thickness);
             }
 
-            short r_thicken_line(const short b, const short a, int thickness){
+            short rThickenLine(const short b, const short a, int thickness){
 
                 return ( b >= a)?(b + thickness):(b-thickness);
             }
@@ -82,10 +82,10 @@ namespace Xioudown{ namespace Math {
                 //determining xs
 
                 //forwards
-                xs.push_back( thicken_line( _x[0], _x[1], 12) );
-                xs.push_back( thicken_line( _x[1], _x[0], 12) );
-                ys.push_back( thicken_line( _y[0], _y[1], 12) );
-                ys.push_back( thicken_line( _y[1], _y[0], 12) );
+                xs.push_back( thickenLine( _x[0], _x[1], 12) );
+                xs.push_back( thickenLine( _x[1], _x[0], 12) );
+                ys.push_back( thickenLine( _y[0], _y[1], 12) );
+                ys.push_back( thickenLine( _y[1], _y[0], 12) );
 
 
                 double run = xs[1] - _x[1];
@@ -94,8 +94,8 @@ namespace Xioudown{ namespace Math {
                 xs.push_back( _x[1] + ( _x[1] >= xs[1] ? rise : (rise * -1) ) );
                 ys.push_back( _y[1] + ( _y[1] >= ys[1] ? run : (run * -1) ) );
                 //backwards
-                xs.push_back( r_thicken_line( _x[0], _x[1], 12));
-                ys.push_back( r_thicken_line( _y[0], _y[1], 12));
+                xs.push_back( rThickenLine( _x[0], _x[1], 12));
+                ys.push_back( rThickenLine( _y[0], _y[1], 12));
 
                 x = new short[4];
                 y = new short[4];
@@ -132,8 +132,8 @@ namespace Xioudown{ namespace Math {
                         ys.push_back( _y[i] != back_y ? back_y : fronty);
 
                         if (vertices == 2 && i == 0){
-                            xs.push_back(thicken_line(_x[0], _x[1], thickness ));
-                            ys.push_back(thicken_line(_y[0], _y[1], thickness ));
+                            xs.push_back(thickenLine(_x[0], _x[1], thickness ));
+                            ys.push_back(thickenLine(_y[0], _y[1], thickness ));
                         }
                     }
 

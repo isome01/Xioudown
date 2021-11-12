@@ -1,0 +1,10 @@
+^C:\USERS\MICHA\DOCUMENTS\XIOUDOWN\TEST\INTEGRATION\TEST-1\BIN\CMAKEFILES\CAD5612B628E84558974E1300DD79C1C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Micha/Documents/Xioudown/test/integration/test-1 -BC:/Users/Micha/Documents/Xioudown/test/integration/test-1/bin --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Micha/Documents/Xioudown/test/integration/test-1/bin/test.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
