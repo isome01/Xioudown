@@ -1,6 +1,14 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_video.h>
+
+#ifndef SDL_GFX
+#define SDL_GFX
+#include "SDL2_gfxPrimitives.h"
+#include "SDL2_rotozoom.h"
+#include "SDL2_gfxPrimitives_font.h"
+#endif
+
 #include "polygon.h"
 #include "xioudown.h"
 
@@ -37,8 +45,8 @@ namespace Xioudown {
             void drawRect(SDL_Rect* rect, Essentials::rgba rgba);
             void drawFilledRect(SDL_Rect* rect, Essentials::rgb rgb);  // uses renderer to draw a rect
             void drawFilledRect(SDL_Rect* rect, Essentials::rgba rgba);
-            void drawFilledPolygon(Xioudown::Math::Polygon *polygon, Essentials::rgb rgb);  //uses renderer to draw a polygon
-            void drawFilledPolygon(Xioudown::Math::Polygon *polygon, Essentials::rgba rgba);
+            void drawFilledPolygon(Math::Polygon *polygon, Essentials::rgb rgb);  //uses renderer to draw a polygon
+            void drawFilledPolygon(Math::Polygon *polygon, Essentials::rgba rgba);
 
         private:
             int g_SCREEN_WIDTH, g_SCREEN_HEIGHT;

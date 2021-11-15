@@ -27,7 +27,7 @@ namespace Xioudown {
 
         class Action; //This is what each animated object will have, and will be instantiated upon inanimate item reactions
         enum EssentialUnit {
-            inGame, gameConfig
+            grid_obj, grid_config
         };
 
         //The location of axis of which the object is moving
@@ -79,6 +79,8 @@ namespace Xioudown {
             SDL_Texture* (*opt_Interface)(); //a function pointer to how the texture is rendered
             void (*onSelect)(); //an on select function pointer
         };
+
+        const EssentialUnit DEFAULT_XIOUDOWN_GRID_UNIT_TYPE = EssentialUnit::grid_obj;
     };
 };
 
@@ -102,5 +104,17 @@ namespace Xioudown {
         private:
             bool m_show_grid;
             std::vector<XioudownGridUnit*> m_grid_units;
+    };
+
+    class XioudownGridUnit {
+        private:
+            SDL_Rect *m_grid_unit_base;
+            Essentials::EssentialUnit m_unit_type;
+
+        public:
+            XioudownGridUnit(Essentials::EssentialUnit _unit = Essentials::DEFAULT_XIOUDOWN_GRID_UNIT_TYPE);
+            ~XioudownGridUnit();
+            Essentials::EssentialUnit getType() const { return m_unit_type; };
+            SDL_Rect* base() const { return m_grid_unit_base; }
     };
 };

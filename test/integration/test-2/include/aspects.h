@@ -28,8 +28,8 @@ class gAppWindow : public GameWindow {
     public:
         void rinse_ui() {
             /* resets UI with render clear and background color */
-            clearScreenToRenderedColor();
             setScreenBackgroundColor({0x00, 0x00, 0x00, 0xff});
+            clearScreenToRenderedColor();
         }
 
         void renderItems() {

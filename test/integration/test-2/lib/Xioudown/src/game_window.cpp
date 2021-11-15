@@ -1,8 +1,6 @@
 #include "game_window.h"
 #include "xioudown.h"
 #include "polygon.h"
-
-#include <SDL.h>
 #include <stdio.h>
 
 
@@ -80,6 +78,28 @@ namespace Xioudown{
             g_renderer,
             rect
         );
+    }
+
+    void GameWindow::drawFilledPolygon(Math::Polygon *polygon, Essentials::rgb rgb = DEFAULT_BACKGROUND_COLOR_RGB) {
+        drawFilledPolygon(polygon, { rgb.r, rgb.g, rgb.b, 0xff});
+    }
+
+    void GameWindow::drawFilledPolygon(Math::Polygon *polygon, Essentials::rgba rgba = DEFAULT_BACKGROUND_COLOR_RGBA) {
+
+        short x[12] = {10, 20, 20, 30, 30, 40, 40, 30, 30, 20, 20, 10};
+        short y[12] = {10, 20, 20, 30, 30, 40, 40, 30, 30, 20, 20, 10};
+        
+        // shortcut for rendering polygon points
+        // filledPolygonRGBA(
+        //     g_renderer,
+        //     x,
+        //     y,
+        //     polygon->getVertices(),
+        //     rgba.r,
+        //     rgba.g,
+        //     rgba.b,
+        //     rgba.a
+        // );
     }
 
     void GameWindow::runFPS() {
