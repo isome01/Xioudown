@@ -17,6 +17,8 @@ namespace Xioudown {
         XIOU_OBJ
     };
 
+    const unitType DEFAULT_XIOUDOWN_GRID_UNIT_TYPE = unitType::XIOU_OBJ;
+
     namespace UI {
         class UIElementComponent; // menus, dialogue boxes - subclass of UIGridUnit
     }
@@ -79,8 +81,6 @@ namespace Xioudown {
             SDL_Texture* (*opt_Interface)(); //a function pointer to how the texture is rendered
             void (*onSelect)(); //an on select function pointer
         };
-
-        const EssentialUnit DEFAULT_XIOUDOWN_GRID_UNIT_TYPE = EssentialUnit::grid_obj;
     };
 };
 
@@ -109,12 +109,36 @@ namespace Xioudown {
     class XioudownGridUnit {
         private:
             SDL_Rect *m_grid_unit_base;
-            Essentials::EssentialUnit m_unit_type;
+            unitType m_unit_type;
 
         public:
-            XioudownGridUnit(Essentials::EssentialUnit _unit = Essentials::DEFAULT_XIOUDOWN_GRID_UNIT_TYPE);
+            XioudownGridUnit(
+                SDL_Rect rect = {0, 0, 0, 0},
+                unitType _unit_type = unitType::XIOU_OBJ
+            );
             ~XioudownGridUnit();
-            Essentials::EssentialUnit getType() const { return m_unit_type; };
+            unitType getType() const { return m_unit_type; };
             SDL_Rect* base() const { return m_grid_unit_base; }
+            int x() const { return m_grid_unit_base->x; }
+            void x(int _x) { m_grid_unit_base->x = _x; }
+            int y() const { return m_grid_unit_base->y; }
+            void y(int _y) { m_grid_unit_base->y = _y; }
+            int w() const { return m_grid_unit_base->w; }
+            void w(int _w) { m_grid_unit_base->w = _w; }
+            int h() const { return m_grid_unit_base->h; }
+            void h(int _h) { m_grid_unit_base->h = _h; }
+
+            // deep copy methods
+            XioudownGridUnit* operator()(SDL_Rect rect);
+            void operator=(SDL_Rect rect);
+            XioudownGridUnit* operator()(XioudownGridUnit* _unit);
+            void operator=(XioudownGridUnit* _unit);
+            XioudownGridUnit* operator()(Essentials::coordinates c);
+            void operator=(Essentials::coordinates c);
+
+            XioudownGridUnit* operator+(Essentials::coordinates c);
+            XioudownGridUnit* operator-(Essentials::coordinates c);
+            void operator+=(Essentials::coordinates c);
+            void operator-=(Essentials::coordinates c);
     };
 };

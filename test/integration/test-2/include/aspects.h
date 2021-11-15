@@ -13,10 +13,6 @@ const int APP_SCREEN_HEIGHT = 960;
 const Xioudown::Essentials::rgba DEFAULT_APP_BKGD_COLOR = {0x00, 0x00, 0x00, 0xff};
 
 class gObject {
-    public:
-        
-    private:
-        SDL_Rect *r;
 };
 
 

@@ -38,7 +38,7 @@ namespace Xioudown {
             void presentRenderedItems();
             void clearScreenToRenderedColor();
             void setScreenBackgroundColor(Essentials::rgba rgba);
-            void renderItem();
+            void renderItem(XioudownGridUnit* _grid_unit);
             void runFPS(); //renders fps on screen
 
             void drawRect(SDL_Rect* rect, Essentials::rgb rgb);  // uses renderer to draw a rect
