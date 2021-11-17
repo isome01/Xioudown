@@ -1,6 +1,7 @@
 #pragma once //to make sure that our header file is only included once in our compilation; header is the interface/library
 
-#include "xioudown.h"
+#include "xioudown_predefs.h"
+
 #include <SDL.h>
 #include <cstddef>
 #include <vector>
@@ -263,3 +264,5 @@ namespace Xioudown{ namespace Math {
             // Polygon operator=(Polygon& p);
     };
 };};
+
+#define XIOUDOWN_POLYGON

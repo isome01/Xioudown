@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SDL.h>
-#include "xioudown.h"
+#include "xioudown_predefs.h"
 
 namespace Xioudown { namespace Math{
 
@@ -13,3 +13,5 @@ namespace Xioudown { namespace Math{
     int cl_SQRT(int n);
 
 };};
+
+#define XIOUDOWN_UTILS

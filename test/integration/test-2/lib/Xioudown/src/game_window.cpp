@@ -43,8 +43,13 @@ namespace Xioudown{
         SDL_RenderPresent(g_renderer);
     }
 
-    void GameWindow::renderItem () {
+    void GameWindow::renderItem(XioudownGridUnit* _grid_unit) {
 
+        // render grid unit base
+        drawFilledRect(
+            _grid_unit->base(),
+            _grid_unit->rgba()
+        );
     }
 
     void GameWindow::drawRect(SDL_Rect* rect, Essentials::rgb rgb = DEFAULT_BACKGROUND_COLOR_RGB) {

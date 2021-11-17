@@ -318,7 +318,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\grid.cpp" />
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\polygon.cpp" />
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\utils.cpp" />
-    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\xioudown.cpp" />
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\aspects.cpp" />
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\main.cpp" />
   </ItemGroup>

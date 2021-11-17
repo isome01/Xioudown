@@ -17,7 +17,6 @@ set(XIOUDOWN_SOURCES
     ${XIOUDOWN_SOURCE_DIR}/grid.cpp
     ${XIOUDOWN_SOURCE_DIR}/polygon.cpp
     ${XIOUDOWN_SOURCE_DIR}/utils.cpp
-    ${XIOUDOWN_SOURCE_DIR}/xioudown.cpp
 )
 
 # Do SDL includes and stuff

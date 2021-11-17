@@ -16,9 +16,6 @@
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\xioudown.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\aspects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

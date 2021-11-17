@@ -1,8 +1,6 @@
 #pragma once
 #include <stdlib.h>
-#include "game_window.h"
 #include "xioudown.h"
-// #include "game_io.h"
 
 
 using namespace Xioudown;
@@ -37,13 +35,15 @@ class gInstancedApp {
     /* Game app and all the appropriate utils */
 
     private:
-        // vars
+        std::vector<XioudownGridUnit*> m_grid_objs;
     public:
         gInstancedApp();
         ~gInstancedApp();
 
         void render();
-        bool appQuit();
+        bool appQuit(){ gWindowInstance->destroy(); };
+        bool processScenarios();
+
     private:
         gAppWindow *gWindowInstance;
         gInstancedApp (gInstancedApp&){};

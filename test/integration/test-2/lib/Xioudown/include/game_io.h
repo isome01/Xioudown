@@ -1,4 +1,6 @@
 #pragma once
+#include "xioudown_predefs.h"
+
 #include <SDL.h>
 #include <map>
 #include <vector>
@@ -39,3 +41,5 @@ namespace Xioudown{ namespace Essentials{
             bool runKeyCode(SDL_Keycode k);
     };
 }; };
+
+#define XIOUDOWN_GAME_IO

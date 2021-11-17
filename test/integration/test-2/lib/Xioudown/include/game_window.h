@@ -1,16 +1,13 @@
 #pragma once
+#include "xioudown_predefs.h"
+#include "polygon.h"
+
 #include <SDL.h>
 #include <SDL_video.h>
-
-#ifndef SDL_GFX
-#define SDL_GFX
 #include "SDL2_gfxPrimitives.h"
 #include "SDL2_rotozoom.h"
 #include "SDL2_gfxPrimitives_font.h"
-#endif
 
-#include "polygon.h"
-#include "xioudown.h"
 
 const Xioudown::Essentials::rgba DEFAULT_BACKGROUND_COLOR_RGBA = { 0xff, 0xff, 0xff, 0xff };
 const Xioudown::Essentials::rgb DEFAULT_BACKGROUND_COLOR_RGB = { 0xff, 0xff, 0xff };
@@ -47,6 +44,7 @@ namespace Xioudown {
             void drawFilledRect(SDL_Rect* rect, Essentials::rgba rgba);
             void drawFilledPolygon(Math::Polygon *polygon, Essentials::rgb rgb);  //uses renderer to draw a polygon
             void drawFilledPolygon(Math::Polygon *polygon, Essentials::rgba rgba);
+            void destroy() { this->~GameWindow(); };  // explicit destroy function
 
         private:
             int g_SCREEN_WIDTH, g_SCREEN_HEIGHT;
@@ -69,3 +67,5 @@ namespace Xioudown {
             bool aptToRender(Math::Polygon *p);
     };
 };
+
+#define XIOUDOWN_GAME_WINDOW

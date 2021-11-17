@@ -20,8 +20,8 @@ namespace Xioudown{ namespace Math{
         else if (!a && b) return b;
         else if (!a && !b) return a;
         else{
-            int a_sz = strlen(a);
-            int b_sz = strlen(b);
+            int a_sz = (int)strlen(a);
+            int b_sz = (int)strlen(b);
 
             char* c = new char[a_sz + b_sz];
             //start with both a and b
@@ -73,7 +73,7 @@ namespace Xioudown{ namespace Math{
     }
 
     coordinates g_rand_coords_from_Rect(const SDL_Rect src){
-        srand(time(NULL));
+        srand((unsigned int)time(NULL));
         coordinates coords;
 
         coords.x = rand()%src.w + src.x;
