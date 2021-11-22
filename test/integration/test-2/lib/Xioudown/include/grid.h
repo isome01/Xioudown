@@ -27,6 +27,7 @@ namespace Xioudown {
 
     class XioudownGridUnit {
         private:
+            uint64_t m_grid_unid;  // the unique address of a unit
             SDL_Rect *m_grid_unit_base;
             unitType m_unit_type;
             Essentials::rgba m_unit_rgba;
@@ -40,8 +41,14 @@ namespace Xioudown {
                 Essentials::rgba _rgba = DEFAULT_XIOUDOWN_GRID_RGBA,
                 unitType _unit_type = DEFAULT_XIOUDOWN_GRID_UNIT_TYPE
             );
+            XioudownGridUnit(
+                SDL_Rect rect,
+                Essentials::rgb _rgb,
+                unitType _unit_type
+            );
             ~XioudownGridUnit();
             
+            uint64_t id() const { return m_grid_unid; }
             unitType getType() const { return m_unit_type; };
             SDL_Rect* base() const { return m_grid_unit_base; }
 
@@ -71,26 +78,41 @@ namespace Xioudown {
 
             // deep copy methods
             XioudownGridUnit* operator()(SDL_Rect rect);
-            void operator=(SDL_Rect rect);
-            XioudownGridUnit* operator()(XioudownGridUnit _unit);
-            void operator=(XioudownGridUnit _unit);
+            // void operator=(SDL_Rect rect);
+            // XioudownGridUnit* operator()(XioudownGridUnit _unit);
+            // void operator=(XioudownGridUnit _unit);
             XioudownGridUnit* operator()(Essentials::coordinates c);
-            void operator=(Essentials::coordinates c);
+            // void operator=(Essentials::coordinates c);
             XioudownGridUnit* operator()(Essentials::rgba _rgba);
-            void operator=(Essentials::rgba _rgba);
+            // void operator=(Essentials::rgba _rgba);
             XioudownGridUnit* operator()(Essentials::rgb _rgb);
-            void operator=(Essentials::rgb _rgb);
+            // void operator=(Essentials::rgb _rgb);
 
-            friend XioudownGridUnit* operator+(XioudownGridUnit &_unit, const Essentials::coordinates c);
-            friend XioudownGridUnit* operator-(XioudownGridUnit &_unit, const Essentials::coordinates c);
+            // inherited pointers operrands
+            friend XioudownGridUnit* operator+(XioudownGridUnit *_unit, const Essentials::coordinates c);
+            friend XioudownGridUnit* operator-(XioudownGridUnit *_unit, const Essentials::coordinates c);
+            friend void operator+=(XioudownGridUnit *_unit, const Essentials::coordinates c);
+            friend void operator-=(XioudownGridUnit *_unit, const Essentials::coordinates c);
+            friend XioudownGridUnit* operator+(XioudownGridUnit *_unit, const Essentials::rgba _rgba);
+            friend XioudownGridUnit* operator-(XioudownGridUnit *_unit, const Essentials::rgba _rgba);
+            friend void operator+=(XioudownGridUnit *_unit, const Essentials::rgba _rgba);
+            friend void operator-=(XioudownGridUnit *_unit, const Essentials::rgba _rgba);
+            friend XioudownGridUnit* operator+(XioudownGridUnit *_unit, const Essentials::rgb _rgb);
+            friend XioudownGridUnit* operator-(XioudownGridUnit *_unit, const Essentials::rgb _rgb);
+            friend void operator+=(XioudownGridUnit *_unit, const Essentials::rgb _rgb);
+            friend void operator-=(XioudownGridUnit *_unit, const Essentials::rgb _rgb);
+
+            // inherited flat class operrands
+            friend XioudownGridUnit operator+(XioudownGridUnit &_unit, const Essentials::coordinates c);
+            friend XioudownGridUnit operator-(XioudownGridUnit &_unit, const Essentials::coordinates c);
             friend void operator+=(XioudownGridUnit &_unit, const Essentials::coordinates c);
             friend void operator-=(XioudownGridUnit &_unit, const Essentials::coordinates c);
-            friend XioudownGridUnit* operator+(XioudownGridUnit &_unit, const Essentials::rgba _rgba);
-            friend XioudownGridUnit* operator-(XioudownGridUnit &_unit, const Essentials::rgba _rgba);
+            friend XioudownGridUnit operator+(XioudownGridUnit &_unit, const Essentials::rgba _rgba);
+            friend XioudownGridUnit operator-(XioudownGridUnit &_unit, const Essentials::rgba _rgba);
             friend void operator+=(XioudownGridUnit &_unit, const Essentials::rgba _rgba);
             friend void operator-=(XioudownGridUnit &_unit, const Essentials::rgba _rgba);
-            friend XioudownGridUnit* operator+(XioudownGridUnit &_unit, const Essentials::rgb _rgb);
-            friend XioudownGridUnit* operator-(XioudownGridUnit &_unit, const Essentials::rgb _rgb);
+            friend XioudownGridUnit operator+(XioudownGridUnit &_unit, const Essentials::rgb _rgb);
+            friend XioudownGridUnit operator-(XioudownGridUnit &_unit, const Essentials::rgb _rgb);
             friend void operator+=(XioudownGridUnit &_unit, const Essentials::rgb _rgb);
             friend void operator-=(XioudownGridUnit &_unit, const Essentials::rgb _rgb);
     };

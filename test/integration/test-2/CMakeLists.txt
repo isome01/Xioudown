@@ -35,5 +35,5 @@ set(GAME_SOURCES
 include_directories(${SDL2_INCLUDE_DIR} ${XIOUDOWN_INCLUDE_DIR} ${GAME_INCLUDE_DIR})
 
 add_executable(${PROJECT_NAME} WIN32 ${XIOUDOWN_SOURCES} ${GAME_SOURCES} main.cpp)
-target_link_libraries(${PROJECT_NAME} -lmingw32 ${SDL2_LIBRARIES} -mwindows)
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 # target_link_libraries(${PROJECT_NAME} -lmingw32 ${SDL2_LIBRARIES} ${XIOUDOWN_LIB_DIR}/Xioudown.lib -mwindows)

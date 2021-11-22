@@ -12,11 +12,13 @@ gInstancedApp::gInstancedApp() {
 
     for (int i = 0; i < 10; i++) {
         m_grid_objs.push_back(
-            new XioudownGridUnit(
-                {10 * i, i * 10, 50, 50},
-                DEFAULT_XIOUDOWN_GRID_RGBA,
-                DEFAULT_XIOUDOWN_GRID_UNIT_TYPE
-            )
+            i > 0
+            ? new XioudownGridUnit(m_grid_objs[i  - 1])
+            : new XioudownGridUnit(
+                    {10 * i, i * 10, 50, 50},
+                    DEFAULT_XIOUDOWN_GRID_RGBA,
+                    DEFAULT_XIOUDOWN_GRID_UNIT_TYPE
+                )
         );
     }
 }
@@ -28,7 +30,9 @@ void gInstancedApp::render() {
     int items_to_render = (int)m_grid_objs.size();
 
     for (int i = 0; i < items_to_render; i++) {
-        gWindowInstance->renderItem(m_grid_objs[i]);
+        Essentials::rgb rgb = {200, 100, 100};
+        XioudownGridUnit *unit = (m_grid_objs[i] - rgb + rgb);
+        gWindowInstance->renderItem(unit);
     }
     
     // short x[12] = {10, 20, 20, 30, 30, 40, 40, 30, 30, 20, 20, 10};

@@ -12,6 +12,8 @@ namespace Xioudown { namespace Math{
     Essentials::coordinates g_rand_coords_from_Rect(const SDL_Rect src);
     int cl_SQRT(int n);
 
+    template <class T>
+    uint64_t generateReferenceId(T ref) { return reinterpret_cast<uint64_t>(&ref); }; // generates a unique id for any item
 };};
 
 #define XIOUDOWN_UTILS

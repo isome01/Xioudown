@@ -91,6 +91,7 @@ namespace Xioudown {
 namespace Xioudown {
     const unitType DEFAULT_XIOUDOWN_GRID_UNIT_TYPE = unitType::XIOU_OBJ;
     const Essentials::rgba DEFAULT_XIOUDOWN_GRID_RGBA = {0xff, 0xff, 0xff, 0xff};
+    const Essentials::rgb DEFAULT_XIOUDOWN_GRID_RGB = {0xff, 0xff, 0xff};
 }
 
 #define XIOUDOWN_PREDEFS
