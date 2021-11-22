@@ -29,8 +29,8 @@ namespace Xioudown {
     m_unit_type(_unit_type),
     m_unit_rgba(_rgba) {
         /* Grid Unit constructor with default safes */
-
-        m_grid_unid = Math::generateReferenceId<XioudownGridUnit>(*this); // generate id for unit
+        
+        m_grid_unid = Math::generateReferenceId<XioudownGridUnit*>(this); // generate id for unit
 
         this->m_grid_unit_base = new SDL_Rect;
         this->x(rect.x);
