@@ -10,6 +10,12 @@ namespace Xioudown{
 
         init(SCREEN_WIDTH, SCREEN_HEIGHT, title);
 
+        if (SDL_Init(SDL_INIT_VIDEO) < 0 ){
+            SDL_GetError();
+        } if (SDL_Init(SDL_INIT_EVERYTHING) < 0){
+            SDL_GetError();
+        }
+
         //For that 60 fps 
         g_window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -25,6 +31,13 @@ namespace Xioudown{
         //Start FPS
         start_time = SDL_GetTicks();
         frame_Count = 0;
+    }
+
+    GameWindow::~GameWindow() {
+
+        SDL_DestroyRenderer(g_renderer);
+        g_renderer = NULL;
+        SDL_Quit();
     }
 
     void GameWindow::clearScreenToRenderedColor () {
@@ -43,7 +56,7 @@ namespace Xioudown{
         SDL_RenderPresent(g_renderer);
     }
 
-    void GameWindow::renderItem(XioudownGridUnit* _grid_unit) {
+    void GameWindow::renderGridUnit(XioudownGridUnit* _grid_unit) {
 
         // render grid unit base
         drawFilledRect(

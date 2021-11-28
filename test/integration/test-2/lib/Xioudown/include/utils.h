@@ -14,6 +14,8 @@ namespace Xioudown { namespace Math{
 
     template <class T>
     uint64_t generateReferenceId(T ref) { return reinterpret_cast<uint64_t>(&ref); }; // generates a unique id for any item
+
+    Uint8 deviseMaxMinHex(Uint8 n);  // returns values inclusive such that 0 <= n <= 255.
 };};
 
 #define XIOUDOWN_UTILS

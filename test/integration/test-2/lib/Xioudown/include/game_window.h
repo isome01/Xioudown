@@ -27,15 +27,12 @@ namespace Xioudown {
 
         public:
             GameWindow(char* title = (char*)("Xioudown Engine Window"), int SCREEN_WIDTH = 960, int SCREEN_HEIGHT = 640);
-            ~GameWindow(){
-                SDL_DestroyRenderer(g_renderer);
-                g_renderer = NULL;
-            }
+            ~GameWindow();
 
             void presentRenderedItems();
             void clearScreenToRenderedColor();
             void setScreenBackgroundColor(Essentials::rgba rgba);
-            void renderItem(XioudownGridUnit* _grid_unit);
+            void renderGridUnit(XioudownGridUnit* _grid_unit);
             void runFPS(); //renders fps on screen
 
             void drawRect(SDL_Rect* rect, Essentials::rgb rgb);  // uses renderer to draw a rect

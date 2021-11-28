@@ -23,6 +23,7 @@ namespace Xioudown {
             _unit->getType()
         ) {
         // construct a grid unit from a parameter grid unit.
+        hidden = _unit->isHidden();
     }
 
     XioudownGridUnit::XioudownGridUnit(SDL_Rect rect, Essentials::rgba _rgba, unitType _unit_type) :
@@ -37,6 +38,8 @@ namespace Xioudown {
         this->y(rect.y);
         this->w(rect.w);
         this->h(rect.h);
+
+        hidden = false;
     }
 
     XioudownGridUnit::XioudownGridUnit(SDL_Rect rect, Essentials::rgb _rgb, unitType _unit_type) :

@@ -9,7 +9,7 @@ using namespace std;
 int main (int argc, char **argv) {
     
     cout << "hello" << endl;
-    app->render();
+    app->processScenarios();
 
     // system("pause");
     return EXIT_SUCCESS;

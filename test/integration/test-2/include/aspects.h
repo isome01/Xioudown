@@ -13,7 +13,6 @@ const Xioudown::Essentials::rgba DEFAULT_APP_BKGD_COLOR = {0x00, 0x00, 0x00, 0xf
 class gObject {
 };
 
-
 class gAppWindow : public GameWindow {
     public:
         gAppWindow (char *title, int screen_width, int screen_height) : GameWindow(title, screen_width, screen_height) {
@@ -31,17 +30,20 @@ class gAppWindow : public GameWindow {
         }
 };
 
+
 class gInstancedApp {
     /* Game app and all the appropriate utils */
 
     private:
         std::vector<XioudownGridUnit*> m_grid_objs;
+        Essentials::IODeviceManager *m_device_manager;
+        
     public:
         gInstancedApp();
         ~gInstancedApp();
 
         void render();
-        bool appQuit(){ gWindowInstance->destroy(); };
+        void appQuit(){ gWindowInstance->destroy(); };
         bool processScenarios();
 
     private:

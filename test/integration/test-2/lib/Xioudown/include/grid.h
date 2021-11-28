@@ -1,5 +1,6 @@
 #pragma once
 #include "xioudown_predefs.h"
+#include "utils.h"
 
 // includes for Xioudown Grid classes
 
@@ -32,6 +33,7 @@ namespace Xioudown {
             unitType m_unit_type;
             Essentials::rgba m_unit_rgba;
             Essentials::direction m_direction;
+            bool hidden;
 
         public:
             XioudownGridUnit();
@@ -51,6 +53,9 @@ namespace Xioudown {
             uint64_t id() const { return m_grid_unid; }
             unitType getType() const { return m_unit_type; };
             SDL_Rect* base() const { return m_grid_unit_base; }
+            void hide() { this->a(0x00); }  // hides this unit
+            void show() { this->a(0xff); }
+            bool isHidden() const { return hidden; }
 
             int x() const { return m_grid_unit_base->x; }
             void x(int _x) { m_grid_unit_base->x = _x; }
@@ -67,13 +72,13 @@ namespace Xioudown {
             Essentials::rgb rgb(){ return {m_unit_rgba.r, m_unit_rgba.g, m_unit_rgba.b}; }
             void rgb(Essentials::rgb _rgb){ m_unit_rgba.r = _rgb.r; m_unit_rgba.g = _rgb.g; m_unit_rgba.b = _rgb.b; }
             Uint8 r(){ return m_unit_rgba.r; }
-            void r(Uint8 _r){ m_unit_rgba.r = _r; }
+            void r(Uint8 _r){ m_unit_rgba.r = Math::deviseMaxMinHex(_r); }
             Uint8 g(){ return m_unit_rgba.g; }
-            void g(Uint8 _g){ m_unit_rgba.g = _g; }
+            void g(Uint8 _g){ m_unit_rgba.g = Math::deviseMaxMinHex(_g); }
             Uint8 b(){ return m_unit_rgba.b; }
-            void b(Uint8 _b){ m_unit_rgba.b = _b; }
+            void b(Uint8 _b){ m_unit_rgba.b = Math::deviseMaxMinHex(_b); }
             Uint8 a(){ return m_unit_rgba.a; }
-            void a(Uint8 _a){ m_unit_rgba.a = _a; }
+            void a(Uint8 _a){ m_unit_rgba.a = Math::deviseMaxMinHex(_a); }
             
 
             // deep copy methods

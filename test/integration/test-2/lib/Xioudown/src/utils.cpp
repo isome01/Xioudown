@@ -81,4 +81,13 @@ namespace Xioudown{ namespace Math{
 
         return coords;
     }
+
+    Uint8 deviseMaxMinHex(Uint8 n) {
+        if ((int)n > 255) {
+            return 0xff;
+        } else if ((int)n < 0) {
+            return 0x00;
+        }
+        return n;
+    }
 }};
