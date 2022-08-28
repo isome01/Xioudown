@@ -2,13 +2,19 @@
 #include <stdlib.h>
 #include "aspects.h"
 
+
 gInstancedApp *app = new gInstancedApp();
 
-using namespace std;
 
 int main (int argc, char **argv) {
+    function<void(void)> a = bind(&gInstancedApp::appQuit, app);
+    function<void(void)> b = bind(&gInstancedApp::testing, app);
+    function<void(void)> c = bind(&gInstancedApp::moveObj, app);
     
-    cout << "hello" << endl;
+    app->deviceManager()->keyboard()->addKeyEvent(KEYBOARD_KEY::ESCAPE, IOActionType::PRESSED, a);
+    app->deviceManager()->keyboard()->addKeyEvent(KEYBOARD_KEY::S, IOActionType::PRESSED, b);
+    app->deviceManager()->keyboard()->addKeyEvent(KEYBOARD_KEY::D, IOActionType::PRESSED, c);
+    
     app->processScenarios();
 
     // system("pause");

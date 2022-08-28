@@ -1,0 +1,9 @@
+# ninja log v5
+7	764	6832516624640791	CMakeFiles/test.dir/lib/Xioudown/src/grid.cpp.obj	b717a8430754d85f
+0	786	6832516624910784	CMakeFiles/test.dir/lib/Xioudown/src/game_io.cpp.obj	1843fe9806e02030
+3	909	6832516626140801	CMakeFiles/test.dir/lib/Xioudown/src/polygon.cpp.obj	1b56591b9646e6bb
+5	913	6832516626200792	CMakeFiles/test.dir/lib/Xioudown/src/game_window.cpp.obj	2acee85640e68029
+9	915	6832516626230808	CMakeFiles/test.dir/lib/Xioudown/src/utils.cpp.obj	8d8f272840b4390e
+12	924	6832516626340785	CMakeFiles/test.dir/src/aspects.cpp.obj	4b27133111d25489
+15	926	6832516626360791	CMakeFiles/test.dir/main.cpp.obj	c8bb84f11ae6a8ac
+926	1142	6832516628460779	test.exe	c1779932d7600c12

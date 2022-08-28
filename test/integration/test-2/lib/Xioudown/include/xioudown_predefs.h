@@ -10,6 +10,9 @@ namespace Xioudown {
 
     /* Xioudown Namespace */
 
+    class XioudownClass{
+        
+    }; // Base class for any class that wants 
     class XioudownGrid;  // This class relays boundaries of the grid from points (x^0, y^0) -> (x^n, y^n)
     class XioudownGridUnit; //Anything that can be tracked on the grid
 

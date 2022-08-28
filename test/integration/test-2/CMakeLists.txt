@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
-set(CMAKE_C_COMPILER, "gcc-8.0.1")
-set(CMAKE_CXX_COMPILER, "g++-8.0.1")
+set(CMAKE_C_COMPILER, "gcc-10.3.0")
+set(CMAKE_CXX_COMPILER, "g++-10.3.0")
 
 project(test)
 
@@ -12,8 +12,8 @@ set(XIOUDOWN_ENGINE_DIR "${PROJECT_SOURCE_DIR}/lib/Xioudown")
 set(XIOUDOWN_INCLUDE_DIR "${XIOUDOWN_ENGINE_DIR}/include")
 set(XIOUDOWN_SOURCE_DIR "${XIOUDOWN_ENGINE_DIR}/src")
 set(XIOUDOWN_SOURCES
-    ${XIOUDOWN_SOURCE_DIR}/game_io.cpp
-    ${XIOUDOWN_SOURCE_DIR}/game_window.cpp
+    ${XIOUDOWN_SOURCE_DIR}/io.cpp
+    ${XIOUDOWN_SOURCE_DIR}/window.cpp
     ${XIOUDOWN_SOURCE_DIR}/grid.cpp
     ${XIOUDOWN_SOURCE_DIR}/polygon.cpp
     ${XIOUDOWN_SOURCE_DIR}/utils.cpp

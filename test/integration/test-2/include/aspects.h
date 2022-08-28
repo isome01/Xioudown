@@ -1,9 +1,12 @@
 #pragma once
 #include <stdlib.h>
 #include "xioudown.h"
-
+#include <functional>
 
 using namespace Xioudown;
+using namespace Essentials;
+using std::function;
+using std::bind;
 
 
 const int APP_SCREEN_WIDTH = 1280;
@@ -30,8 +33,7 @@ class gAppWindow : public GameWindow {
         }
 };
 
-
-class gInstancedApp {
+class gInstancedApp : public XioudownClass {
     /* Game app and all the appropriate utils */
 
     private:
@@ -43,8 +45,11 @@ class gInstancedApp {
         ~gInstancedApp();
 
         void render();
-        void appQuit(){ gWindowInstance->destroy(); };
+        void appQuit(){ m_device_manager->ioQuit(true); };
         bool processScenarios();
+        void testing(){ system("echo yuuuuuuuuuuus"); };
+        void moveObj();
+        Essentials::IODeviceManager* deviceManager(){ return this->m_device_manager; }
 
     private:
         gAppWindow *gWindowInstance;
@@ -53,3 +58,9 @@ class gInstancedApp {
 
         // Xioudown::Essentials::gameIOController *app_io_controller;
 };
+
+
+gInstancedApp* addMovementKeyboardActions(gInstancedApp *(&app));
+
+gInstancedApp* addInteractionsKeyboardActions(gInstancedApp *(&app));
+

@@ -4,8 +4,8 @@
 #include "utils.h"
 #include "polygon.h"
 #include "essentials.h"
-#include "game_io.h"
+#include "io.h"
 #include "grid.h"
-#include "game_window.h"
+#include "window.h"
 
 #define XIOUDOWN_ENGINE

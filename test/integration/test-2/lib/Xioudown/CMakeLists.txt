@@ -6,7 +6,7 @@ set(CMAKE_CXX_COMPILER, "g++-8.0.1")
 # set the project name and version
 project(Xioudown VERSION 1.0 DESCRIPTION "Xioudown Game Engine build testing")
 # Set source directories
-set(XIOUDOWN_SOURCES src/game_io.cpp src/gameWindow.cpp src/methods.cpp src/polygon.cpp)
+set(XIOUDOWN_SOURCES src/io.cpp src/window.cpp src/methods.cpp src/polygon.cpp)
 
 # first find and intiate SDL: Custom
 message(STATUS "Linking SDL from source: ${PROJECT_SOURCE_DIR}/lib/sdl_dev_lib")

@@ -7,5 +7,5 @@ using namespace Essentials;
 
 void exit_game() {
     /* Basic exit game switch. */
-    system("pause");
+    system("echo yuuuuuuuuuuus");
 }
