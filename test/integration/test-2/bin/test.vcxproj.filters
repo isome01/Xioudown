@@ -19,6 +19,15 @@
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\aspects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\game_io.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

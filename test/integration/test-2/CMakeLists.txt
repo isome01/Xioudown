@@ -22,7 +22,7 @@ set(XIOUDOWN_SOURCES
 # Do SDL includes and stuff
 set(SDL2_DEP_DIR "${XIOUDOWN_ENGINE_DIR}/lib/sdl_dev_lib")
 set(SDL2_LIBRARY_DIR "${SDL2_DEP_DIR}/lib")  #set custom defined SDL2_LIBRARY_DIR variable to appropriate path
-set(SDL2_LIBRARIES ${SDL2_LIBRARY_DIR}/libSDL2main.a ${SDL2_LIBRARY_DIR}/libSDL2_ttf.a ${SDL2_LIBRARY_DIR}/libSDL2_image.a ${SDL2_LIBRARY_DIR}/libSDL2.dll.a)
+set(SDL2_LIBRARIES ${SDL2_LIBRARY_DIR}/libSDL2main.a ${SDL2_LIBRARY_DIR}/libSDL2.dll.a ${SDL2_LIBRARY_DIR}/libSDL2_image.a ${SDL2_LIBRARY_DIR}/libSDL2_image.dll.a ${SDL2_LIBRARY_DIR}/libSDL2_ttf.a ${SDL2_LIBRARY_DIR}/libSDL2_ttf.dll.a ${SDL2_LIBRARY_DIR}/libSDL2_mixer.a ${SDL2_LIBRARY_DIR}/libSDL2_mixer.dll.a)
 set(SDL2_INCLUDE_DIR "${SDL2_DEP_DIR}/include/SDL2")
 
 # Do game files to compile
@@ -30,10 +30,13 @@ set(GAME_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src")
 set(GAME_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
 set(GAME_SOURCES
     ${GAME_SOURCE_DIR}/aspects.cpp
+    ${GAME_SOURCE_DIR}/entity.cpp
+    ${GAME_SOURCE_DIR}/game_io.cpp
+    ${GAME_SOURCE_DIR}/client.cpp
 )
 
 include_directories(${SDL2_INCLUDE_DIR} ${XIOUDOWN_INCLUDE_DIR} ${GAME_INCLUDE_DIR})
 
 add_executable(${PROJECT_NAME} WIN32 ${XIOUDOWN_SOURCES} ${GAME_SOURCES} main.cpp)
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2_DEP_DIR}/bin/libpng.dll ${SDL2_DEP_DIR}/bin/libpng16.dll ${SDL2_DEP_DIR}/bin/jpeg.dll)
 # target_link_libraries(${PROJECT_NAME} -lmingw32 ${SDL2_LIBRARIES} ${XIOUDOWN_LIB_DIR}/Xioudown.lib -mwindows)

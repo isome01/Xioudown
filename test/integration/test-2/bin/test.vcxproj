@@ -114,7 +114,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_ttf.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -157,7 +157,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_ttf.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -200,7 +200,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_ttf.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -242,7 +242,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_ttf.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2main.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2.dll.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.a;..\lib\Xioudown\lib\sdl_dev_lib\lib\libSDL2_image.dll.a;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -319,6 +319,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\polygon.cpp" />
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\lib\Xioudown\src\utils.cpp" />
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\aspects.cpp" />
+    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\entity.cpp" />
+    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\game_io.cpp" />
+    <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\src\client.cpp" />
     <ClCompile Include="C:\Users\Micha\Documents\Xioudown\test\integration\test-2\main.cpp" />
   </ItemGroup>
   <ItemGroup>

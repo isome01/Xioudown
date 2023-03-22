@@ -17,7 +17,7 @@ include_directories(${SDL2_INCLUDE_DIR})
 
 set(SDL2_LIBRARY_DIR "${PROJECT_SOURCE_DIR}/lib/sdl_dev_lib/lib")  #set custom defined SDL2_LIBRARY_DIR variable to appropriate path
 # Here we'll have to explicitly preset the SDL Dependencies/Libraries
-set(SDL2_LBRARIES ${SDL2_LIBRARY_DIR}/libSDL2main.a ${SDL2_LIBRARY_DIR}/libSDL2_ttf.a ${SDL2_LIBRARY_DIR}/libSDL2_image.a ${SDL2_LIBRARY_DIR}/libSDL2.dll.a)
+set(SDL2_LBRARIES ${SDL2_LIBRARY_DIR}/libSDL2main.a ${SDL2_LIBRARY_DIR}/libSDL2_image.a ${SDL2_LIBRARY_DIR}/libSDL2_ttf.a ${SDL2_LIBRARY_DIR}/libSDL2_mixer.a ${SDL2_LIBRARY_DIR}/libSDL2.dll.a)
 
 # Create Library from sources
 add_library("${PROJECT_NAME}" STATIC ${XIOUDOWN_SOURCES})

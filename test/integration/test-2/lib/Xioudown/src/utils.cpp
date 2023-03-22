@@ -1,10 +1,10 @@
 #include "utils.h"
-#include "xioudown.h"
 #include <math.h>
-#include <string.h>
+#include <string>
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
+
 #include <SDL.h>
 #include <SDL_image.h>
 
@@ -72,8 +72,7 @@ namespace Xioudown{ namespace Math{
         return int(a);
     }
 
-    coordinates g_rand_coords_from_Rect(const SDL_Rect src){
-        srand((unsigned int)time(NULL));
+    coordinates g_rand_coords_from_Rect(const SDL_Rect src) {
         coordinates coords;
 
         coords.x = rand()%src.w + src.x;

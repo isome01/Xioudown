@@ -263,6 +263,9 @@ namespace Xioudown{ namespace Math {
             // Polygon operator()(Polygon& p);
             // Polygon operator=(Polygon& p);
     };
+
+    bool inside(int vert_x, int vert_y); //Check to see if a particular point is inside the polygon with integer values.
+    bool inside(short vx, short vy); //Check to see if a particular point is inside the polygon.
 };};
 
 #define XIOUDOWN_POLYGON

@@ -1,8 +1,17 @@
 #include "window.h"
 #include "xioudown.h"
 #include "polygon.h"
-#include <stdio.h>
+#include "math.h"
 
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <string>
+
+#include <SDL_image.h>
+
+using namespace Xioudown::Essentials;
+// using namespace Xioudown::Media;
 
 namespace Xioudown{
 
@@ -15,22 +24,21 @@ namespace Xioudown{
         } if (SDL_Init(SDL_INIT_EVERYTHING) < 0){
             SDL_GetError();
         }
-
         //For that 60 fps 
         g_window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-
         //The screen surface is then rendered onto the window handle
         g_surface = SDL_GetWindowSurface(g_window);
+        
+        // SDL_SetWindowResizable(g_window, SDL_TRUE ); //make window resizable
 
-        //We'll test this later... ~ resizable windows ~ 
-
-        /* //make window resizable
-        SDL_SetWindowResizable(g_window, SDL_TRUE ); */
-
+        unsigned t = SDL_GetTicks();
+        srand(t);
         //Start FPS
-        start_time = SDL_GetTicks();
+        start_time = t;
         frame_Count = 0;
+
+        loadTexture("basic", "src/data/media/img/dungeon_floor.png");
     }
 
     GameWindow::~GameWindow() {
@@ -56,13 +64,42 @@ namespace Xioudown{
         SDL_RenderPresent(g_renderer);
     }
 
-    void GameWindow::renderGridUnit(XioudownGridUnit* _grid_unit) {
+    void GameWindow::renderGrid(XioudownGrid *_grid) {
+        if (_grid->show_grid()) {
+            Media::Texture *t = m_media_textures["basic"];
+            
+            int grid_size = _grid->wire_frame_grid_size();
+            for (int i = 0; i < grid_size; i++) {
+                if (t != NULL && t->body() != NULL) {
+                    // printf("Gets here to the texture\n");
+                    SDL_RenderCopy(g_renderer, t->body(), NULL, _grid->wire_frame(i));
+                }
+                // drawRect(
+                //     _grid->wire_frame(i),
+                //     {0, 0xff, 0xff, 1}
+                // );
+            }
+        }
+        /* 
+            Then render the background of the grid, whatever it may be
+        */
+    }
 
-        // render grid unit base
-        drawFilledRect(
-            _grid_unit->base(),
-            _grid_unit->rgba()
-        );
+    void GameWindow::renderGridUnit(XioudownGridUnit* _grid_unit) {
+        // attempt texture filling
+        Media::Texture *t = getTextureFromSpecs(_grid_unit);
+        SDL_Rect *base = _grid_unit->base();
+        if (t != NULL && t->body() != NULL) {
+            // printf("Gets here to the texture\n");
+            SDL_RenderCopy(g_renderer, t->body(), NULL, base);
+
+        } else {
+            // render grid unit base
+            drawFilledRect(
+                base,
+                _grid_unit->rgba()
+            );
+        }
     }
 
     void GameWindow::drawRect(SDL_Rect* rect, Essentials::rgb rgb = DEFAULT_BACKGROUND_COLOR_RGB) {
@@ -104,6 +141,8 @@ namespace Xioudown{
 
     void GameWindow::drawFilledPolygon(Math::Polygon *polygon, Essentials::rgba rgba = DEFAULT_BACKGROUND_COLOR_RGBA) {
 
+        // list of xs and ys that correspond to x1/y1, x2/y2
+        
         short x[12] = {10, 20, 20, 30, 30, 40, 40, 30, 30, 20, 20, 10};
         short y[12] = {10, 20, 20, 30, 30, 40, 40, 30, 30, 20, 20, 10};
         
@@ -134,7 +173,9 @@ namespace Xioudown{
 
             frame_Count++;
     }
+};
 
+namespace Xioudown {
     bool GameWindow::aptToRender(SDL_Rect r){
 
         int centerX = g_SCREEN_WIDTH / 2, centerY = g_SCREEN_HEIGHT / 2;
@@ -158,4 +199,56 @@ namespace Xioudown{
                 return false;
         } return true;
     }
+
+    coordinates GameWindow::setCameraTarget(XioudownGrid *_grid, XioudownGridUnit *_grid_unit)
+    {
+        coordinates screen_center = {
+            this->g_SCREEN_WIDTH / 2,
+            this->g_SCREEN_HEIGHT / 2
+        };
+        coordinates c = _grid_unit->getCenter();
+        coordinates position_diff = {
+            (c.x >= screen_center.x ? -1 : 1)*(abs(screen_center.x - c.x)),
+            (c.y >= screen_center.y ? -1 : 1)*(abs(screen_center.y - c.y))
+        };
+
+        if (_grid->show_grid()) {
+            for (int i = 0; i < _grid->wire_frame_grid_size(); i++) {
+                _grid->wire_frame(i)->x += position_diff.x;
+                _grid->wire_frame(i)->y += position_diff.y;
+            }
+        }
+
+        int unit_count = _grid->gridUnitsCount();
+        for (int i = 0; i < unit_count; i++) {
+            // hold from processing same unit translation
+            XioudownGridUnit *u = _grid->gridUnit(i);
+            u += position_diff;
+        }
+        return c;// return current camera center
+    }
 };
+
+namespace Xioudown {
+    /* Media methods */
+    void GameWindow::loadTexture(std::string _alias, std::string _path)
+    {
+        Media::Texture *t = new Media::Texture(_path);
+        t->load(this->g_renderer);
+        m_media_textures[_alias] = t != NULL ? t : NULL;
+    }
+
+    Media::Texture* GameWindow::getTextureFromSpecs(XioudownGridUnit *_unit)
+    {
+        Media::textureConfig config = _unit->textureConfig();
+        std::string alias = !(config.alias.empty()) ? config.alias : " ";
+        std::map<std::string, Media::Texture*>::const_iterator it = m_media_textures.find(alias);
+        Media::Texture *m = nullptr;
+        if (it == m_media_textures.end()) {
+            // attempt to get new texture if one isn't assigned.
+            loadTexture(alias, config.path);
+        }
+        
+        return m_media_textures[alias];
+    }
+}

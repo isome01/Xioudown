@@ -63,8 +63,9 @@ namespace Xioudown { namespace Essentials {
 
     class IOKeyBoard : public IODevice {
         private:
-            SDL_Keycode previousKeyPressed;
-            std::vector<bool> key_codes; //a bit exhaustive an inefficient but this represents all possible values of "key codes" SDL uses to record input.
+            SDL_Keycode previousKey, currentKey;
+            std::vector<bool> key_codes; //a bit exhaustive and inefficient but this represents all possible values of "key codes" SDL uses to record input.
+        
         public:
             IOKeyBoard();
             ~IOKeyBoard();
@@ -75,8 +76,16 @@ namespace Xioudown { namespace Essentials {
             bool keyIsPressed(SDL_Scancode _code);
             bool keyIsToggled(SDL_Scancode _code);
             bool keyIsHeld(SDL_Scancode _code);
+            bool keyIsPressed(KEYBOARD_KEY _key);
+            bool keyIsToggled(KEYBOARD_KEY _key);
+            bool keyIsHeld(KEYBOARD_KEY _key);
+            void pressedKey(KEYBOARD_KEY _key, std::function<void(void)> &callback);
+            void toggledKey(KEYBOARD_KEY _key, std::function<void(void)> &callback);
+            void heldKey(KEYBOARD_KEY _key, std::function<void(void)> &callback);
         
         public:
+            KEYBOARD_KEY getPreviousKey() const{ return KEYBOARD_KEY(previousKey); }
+            KEYBOARD_KEY getCurrentKey() const{ return KEYBOARD_KEY(currentKey); }
             void addKeyEvent(KEYBOARD_KEY _key, IOActionType _type, void(*&f)()); // adds a method for any provided keyboard key and the action performed on it.
             void addKeyEvent(KEYBOARD_KEY _key, IOActionType _type, extXioudownMethod &f); // the same as the other if done from a class instance.
             void initiateKeyboardEvents();

@@ -38,6 +38,7 @@ namespace Xioudown { namespace Essentials {
         for (int i = 0; i < DEFAULT_IO_CODE_RANGE; i++){
             key_codes.push_back(false);
         }
+        currentKey = previousKey = SDLK_UNKNOWN; 
     }
 
     IOKeyBoard::~IOKeyBoard() {
@@ -58,7 +59,10 @@ namespace Xioudown { namespace Essentials {
             case SDL_QUIT:
                 break;
             case SDL_KEYDOWN:
-                previousKeyPressed = previousKeyPressed ? previousKeyPressed : e.key.keysym.sym;
+                currentKey = e.key.keysym.sym;
+                if (currentKey != SDLK_UNKNOWN){
+                    previousKey = currentKey;
+                } 
                 key_codes[code] = true;
                 break;
             case SDL_KEYUP:
@@ -129,24 +133,58 @@ namespace Xioudown { namespace Essentials {
         return key_codes[SDL_GetScancodeFromKey(_key)]; 
     }
 
-    bool IOKeyBoard::keyIsPressed(SDL_Scancode _code) {
+    bool IOKeyBoard::keyIsPressed(SDL_Scancode _code)
+    {
         return key_codes[_code];
     }
 
     bool IOKeyBoard::keyIsHeld(SDL_Scancode _code)
     {
         return (
-            key_codes[_code] && key_codes[SDL_GetScancodeFromKey(previousKeyPressed)] 
+            key_codes[_code] && key_codes[SDL_GetScancodeFromKey(currentKey)] && key_codes[SDL_GetScancodeFromKey(previousKey)] 
         );
     }
 
     bool IOKeyBoard::keyIsToggled(SDL_Scancode _code)
     {
         return (
-            key_codes[SDL_GetScancodeFromKey(previousKeyPressed)] && !key_codes[_code]
+            key_codes[SDL_GetScancodeFromKey(previousKey)] && !key_codes[_code]
         );
     }
-    
+
+    bool IOKeyBoard::keyIsPressed(KEYBOARD_KEY _key)
+    {
+        return runKeyCode(_key);
+    }
+
+    bool IOKeyBoard::keyIsToggled(KEYBOARD_KEY _key)
+    {
+        return (
+            runKeyCode(_key) && runKeyCode(previousKey)
+        );
+    }
+
+    bool IOKeyBoard::keyIsHeld(KEYBOARD_KEY _key)
+    {
+        return (
+            runKeyCode(previousKey) && !runKeyCode(_key)
+        );
+    }
+
+    void IOKeyBoard::pressedKey(KEYBOARD_KEY _key, std::function<void(void)> &callback)
+    {
+        addKeyEvent(_key, IOActionType::PRESSED, callback);
+    }
+
+    void IOKeyBoard::toggledKey(KEYBOARD_KEY _key, std::function<void(void)> &callback)
+    {
+        addKeyEvent(_key, IOActionType::TOGGLED, callback);
+    }
+
+    void IOKeyBoard::heldKey(KEYBOARD_KEY _key, std::function<void(void)> &callback)
+    {    
+        addKeyEvent(_key, IOActionType::HELD, callback);
+    }
 };};
 
 

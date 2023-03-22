@@ -4,6 +4,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <string>
 #include <vector>
 
 namespace Xioudown {
@@ -147,6 +148,13 @@ namespace Xioudown {
 
     namespace Math {
         
+    };
+
+    namespace Media {
+        struct textureConfig {
+            std::string path = ""; std::string alias = "";
+            int clip = 0, clip_max = 1; 
+        };
     };
 };
 

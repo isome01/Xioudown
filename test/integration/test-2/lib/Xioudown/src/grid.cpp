@@ -1,29 +1,119 @@
 #include "grid.h"
 #include "utils.h"
+#include "math.h"
 #include <stdio.h>
 
 namespace Xioudown {
+    const int DEFAULT_GRID_UNIT_SIZE = 100;
     /* Xioudown Grid Implementation */
+    XioudownGrid::XioudownGrid(short width, short height) {
+        this->m_xiou_grid_boundaries.x = 0;
+        this->m_xiou_grid_boundaries.y = 0;
+        this->m_xiou_grid_boundaries.w = width;
+        this->m_xiou_grid_boundaries.h = height;
+
+        m_show_grid = true;
+
+        this->initWireFrame(DEFAULT_GRID_UNIT_SIZE);
+    }
+    
+    XioudownGrid::~XioudownGrid() {
+        deconstructWireFrame();
+    }
+
+    void XioudownGrid::reframeWireFrame(short scale_w, short scale_h) {
+        deconstructWireFrame();
+        initWireFrame(scale_w, scale_h);
+    }
+
+    void XioudownGrid::reframeWireFrame(int unit_size) {
+        deconstructWireFrame();
+        initWireFrame(unit_size);
+    }
+
+    void XioudownGrid::initWireFrame(int unit_size) {
+        int count = 0;
+        Essentials::coordinates room_size = {m_xiou_grid_boundaries.w, m_xiou_grid_boundaries.h};
+        int max_size = room_size.x * room_size.y;
+        this->m_grid_wireframe = new SDL_Rect*[room_size.x * room_size.y];
+        for (short y = 0; y < room_size.y && count < max_size; y+=unit_size) {
+            for (short x = 0; x < room_size.x && count < max_size; x+=unit_size) {
+                if ((x + unit_size) >= room_size.x) {
+                    this->m_grid_wireframe[count++] = new SDL_Rect({x, y, abs(room_size.x - (x + unit_size)), unit_size});
+                }
+                else if ((y + unit_size) >= room_size.y) {
+                    this->m_grid_wireframe[count++] = new SDL_Rect({x, y, unit_size, abs(room_size.y - (y + unit_size))});
+                }
+                else {
+                    this->m_grid_wireframe[count++] = new SDL_Rect({x, y, unit_size, unit_size});
+                }
+            }
+        }
+        m_wire_frame_grid_size = count;
+    }
+    
+    void XioudownGrid::initWireFrame(short width, short height) {
+        short scale_w = Math::cl_SQRT(width);
+        short scale_h = Math::cl_SQRT(height);
+        int count = 0;
+        int max_size = width * height;
+
+        this->m_grid_wireframe = new SDL_Rect*[max_size];
+        for (short y = 0; y < height && count < max_size; y+=scale_h) {
+            for (short x = 0; x < width && count < max_size; x+=scale_w) {
+                this->m_grid_wireframe[count++] = new SDL_Rect({x, y, scale_w, scale_h});
+            }
+        }
+        m_wire_frame_grid_size = count;
+    }
+
+    void XioudownGrid::deconstructWireFrame() {
+        delete m_grid_wireframe;
+    }
+
+    SDL_Rect* XioudownGrid::wire_frame(int n) {
+        // short max_size = m_xiou_grid_boundaries.w * m_xiou_grid_boundaries.h;
+        if (n < 0) n = 0;
+        if (n >= m_wire_frame_grid_size) n = m_wire_frame_grid_size - 1;
+        return m_grid_wireframe[n];
+    }
+
+    const short XioudownGrid::width() { return m_xiou_grid_boundaries.w; }
+
+    const short XioudownGrid::height() { return m_xiou_grid_boundaries.h; }
+    
+    void XioudownGrid::show_grid(bool s) { m_show_grid = s; }
+
+    const bool XioudownGrid::show_grid() { return m_show_grid; }
+
+    void XioudownGrid::render() {
+        if (m_show_grid) {
+            short box_width = Math::cl_SQRT(m_xiou_grid_boundaries.w);
+            short box_height = Math::cl_SQRT(m_xiou_grid_boundaries.h);
+        }
+    }
 };
 
 
 namespace Xioudown {
-
     XioudownGridUnit::XioudownGridUnit() : XioudownGridUnit(
             {0, 0, 0, 0},
             DEFAULT_XIOUDOWN_GRID_RGBA,
             DEFAULT_XIOUDOWN_GRID_UNIT_TYPE
         ) {
         // Erect default constructor if basic object is defined
+        m_last_move = {0, 0};
+        m_grid_unid = Math::generateReferenceId<XioudownGridUnit*>(this); // generate id for unit
     }
 
     XioudownGridUnit::XioudownGridUnit(XioudownGridUnit *_unit) : XioudownGridUnit::XioudownGridUnit(
-            {_unit->x(), _unit->y(), _unit->w(), _unit->h()},
-            {_unit->r(), _unit->g(), _unit->b(), _unit->a()},
-            _unit->getType()
-        ) {
+        {_unit->x(), _unit->y(), _unit->w(), _unit->h()},
+        {_unit->r(), _unit->g(), _unit->b(), _unit->a()},
+        _unit->getType()
+    ) {
         // construct a grid unit from a parameter grid unit.
         hidden = _unit->isHidden();
+        m_grid_unid = Math::generateReferenceId<XioudownGridUnit*>(this); // generate id for unit
     }
 
     XioudownGridUnit::XioudownGridUnit(SDL_Rect rect, Essentials::rgba _rgba, unitType _unit_type) :
@@ -40,6 +130,7 @@ namespace Xioudown {
         this->h(rect.h);
 
         hidden = false;
+        m_last_move = {this->x(), this->y()};
     }
 
     XioudownGridUnit::XioudownGridUnit(SDL_Rect rect, Essentials::rgb _rgb, unitType _unit_type) :
@@ -54,20 +145,172 @@ namespace Xioudown {
         this->y(rect.y);
         this->w(rect.w);
         this->h(rect.h);
+
+        m_last_move = {this->x(), this->y()};
     }
+
+    bool XioudownGridUnit::inside(int vert_x , int vert_y) { //To find if a certain point is inside
+        int vertex_1, vertex_2;
+        bool flag = false; //boolean flag
+        
+        //convert x and y coordinates to short values
+        short vx = short(vert_x);
+        short vy = short(vert_y);
+
+        short vertices = 4;
+
+        SDL_Rect *base = m_grid_unit_base;
+        int poly_y[] = {
+            base->y,
+            base->y + base->h,
+            base->y + base->h,
+            base->y
+        };
+        int poly_x[] = {
+            base->x,
+            base->x,
+            base->x + base->w,
+            base->x + base->w
+        };
+
+        //our index and jump variable handles the first and last vertices as first case
+        for (vertex_1 = 0, vertex_2 = vertices - 1; vertex_1 < vertices ; vertex_2 = vertex_1++) {
+
+            //So, if our point has crossed line segments (including the fact that our point may be on the line)...
+            if ( ((poly_y[vertex_1] > vy) != (poly_y[vertex_2] > vy)) &&
+                 ( vx < ( poly_x[vertex_2] - poly_x[vertex_1] ) * ( vy - poly_y[vertex_1] ) / ( poly_y[vertex_2] - poly_y[vertex_1] ) + poly_x[vertex_1])
+               ){
+                   //then we flip the flag's boolean value
+                    flag = !( flag ); //Even # of times flipped - should revert the flag to false.
+                                          //Odd # of times flipped  - should revert the flag to true.
+            }
+        }
+        return flag;
+    }
+
+    void XioudownGridUnit::collision(XioudownGridUnit *_grid_unit = nullptr) {
+        /* Default void function for collision events between grid objects. */
+        if (this->id() == _grid_unit->id()){
+            return;
+        }
+
+        if (collisionSet() && collidesWith(_grid_unit)) {
+            SDL_Rect u = *(_grid_unit->base());
+            int unit_left_right[2] = {u.x, u.x + u.w};
+            int unit_up_down[2] = {u.y, u.y + u.h};
+
+            Essentials::direction d = getDirection();
+            
+            // Reset coordinates and direction based on position
+            int collision_dist = 0;
+            switch (d)
+            {
+            case Essentials::direction::LEFT:
+                collision_dist = abs(unit_left_right[1] - m_last_move.x) - 1;
+                x(m_last_move.x);
+                m_last_move.x = x();
+                break;
+            case Essentials::direction::RIGHT:
+                collision_dist = abs(unit_left_right[0] - m_last_move.x) + 1;
+                x(m_last_move.x);
+                m_last_move.x = x();
+                break;
+            case Essentials::direction::UP:
+                collision_dist = abs(unit_up_down[1] - m_last_move.y) - 1;
+                y(m_last_move.y);
+                m_last_move.y = y();
+                break;
+            case Essentials::direction::DOWN:
+                collision_dist = abs(unit_up_down[0] - m_last_move.y - 1) - 1;
+                y(m_last_move.y);
+                m_last_move.y = y();
+                break;
+            
+            default:
+                break;
+            }
+            this->setDirection(d);
+        }
+    }
+    
+    bool XioudownGridUnit::collidesWith(XioudownGridUnit *_grid_unit) {
+        short vertices = 4;
+
+        SDL_Rect *base = _grid_unit->base();
+        int unit_y[4] = {
+            base->y,
+            base->y + base->h,
+            base->y + base->h,
+            base->y
+        };
+        int unit_x[4] = {
+            base->x,
+            base->x,
+            base->x + base->w,
+            base->x + base->w
+        };
+        bool hit = false;
+        for (int i = 0; i < vertices; i++) {
+            hit = inside(unit_x[i], unit_y[i]);
+            if (hit) {
+                break;
+            }
+        } return hit;
+    }   
 
     XioudownGridUnit::~XioudownGridUnit() {
         delete m_grid_unit_base;
     }
 
-    XioudownGridUnit* XioudownGridUnit::operator()(SDL_Rect rect) {
-        XioudownGridUnit *unit = new XioudownGridUnit(this);
-        unit->m_grid_unit_base->x = rect.x;
-        unit->m_grid_unit_base->y = rect.y;
-        unit->m_grid_unit_base->w = rect.w;
-        unit->m_grid_unit_base->h = rect.h;
+    Essentials::coordinates XioudownGridUnit::getTransitionDistance() {
+        return {
+            m_grid_unit_base->x - m_last_move.x,
+            m_grid_unit_base->y - m_last_move.y
+        };
+    }
 
-        return unit;
+    Essentials::direction XioudownGridUnit::generateUnitDirection() {
+        Essentials::coordinates diff = getTransitionDistance();
+
+        if (diff.x < 0) {
+            m_direction = Essentials::direction::LEFT;
+        }
+        else if (diff.x > 0) {
+            m_direction = Essentials::direction::RIGHT;
+        }
+        else if (diff.y < 0) {
+            m_direction = Essentials::direction::UP;
+        }
+        else if (diff.y > 0) {
+            m_direction = Essentials::direction::DOWN;
+        }
+        
+        return m_direction;
+    }
+
+    void XioudownGridUnit::x(int _x) {
+        m_last_move.x = m_grid_unit_base->x;
+        m_grid_unit_base->x = _x;
+        int transition = this->getTransitionDistance().x;
+        if (transition < 0) {
+            m_direction = Essentials::direction::LEFT;
+        }
+        else if (transition > 0) {
+            m_direction = Essentials::direction::RIGHT;
+        }
+    }
+
+    void XioudownGridUnit::y(int _y) {
+        m_last_move.y = m_grid_unit_base->y;
+        m_grid_unit_base->y = _y;
+
+        int transition = this->getTransitionDistance().y;
+        if (transition < 0) {
+            m_direction = Essentials::direction::UP;
+        }
+        else if (transition > 0) {
+            m_direction = Essentials::direction::DOWN;
+        }
     }
 
     // void XioudownGridUnit::operator=(SDL_Rect rect) {
@@ -86,6 +329,16 @@ namespace Xioudown {
     //     SDL_Rect rect = {_unit.x(), _unit.y(), _unit.w(), _unit.h()};
     //     m_unit_type = _unit.getType();
     // }
+
+    XioudownGridUnit* XioudownGridUnit::operator()(SDL_Rect rect) {
+        XioudownGridUnit *unit = new XioudownGridUnit(this);
+        unit->m_grid_unit_base->x = rect.x;
+        unit->m_grid_unit_base->y = rect.y;
+        unit->m_grid_unit_base->w = rect.w;
+        unit->m_grid_unit_base->h = rect.h;
+
+        return unit;
+    }
 
     XioudownGridUnit* XioudownGridUnit::operator()(Essentials::coordinates c) {
         // return deep copy of XioudownGridUnit with new Essentials::coordinates.

@@ -1,6 +1,8 @@
 #pragma once
 #include <stdlib.h>
 #include "xioudown.h"
+#include "entity.h"
+#include "grid.h"
 #include <functional>
 
 using namespace Xioudown;
@@ -37,8 +39,8 @@ class gInstancedApp : public XioudownClass {
     /* Game app and all the appropriate utils */
 
     private:
-        std::vector<XioudownGridUnit*> m_grid_objs;
-        Essentials::IODeviceManager *m_device_manager;
+        XioudownGridUnit *m_paddle;
+        XioudownGrid *m_test_grid;
         
     public:
         gInstancedApp();
@@ -47,20 +49,34 @@ class gInstancedApp : public XioudownClass {
         void render();
         void appQuit(){ m_device_manager->ioQuit(true); };
         bool processScenarios();
-        void testing(){ system("echo yuuuuuuuuuuus"); };
         void moveObj();
+        void movePaddle(XioudownGrid *_grid, XioudownGridUnit *paddle);
+        void upsizeWireFrame() {
+            short width = this->m_test_grid->width();
+            short height = this->m_test_grid->height();
+            this->m_test_grid->reframeWireFrame(width + 1000, height + 1000);
+        }
+        void downsizeWireFrame() {
+            short width = this->m_test_grid->width();
+            short height = this->m_test_grid->height();
+            this->m_test_grid->reframeWireFrame(width - 100, height - 100);
+        }
+        // void processEntityMovement(Entity *e);
         Essentials::IODeviceManager* deviceManager(){ return this->m_device_manager; }
+
+        XioudownGrid* getTestGrid() { return this-> m_test_grid; }
 
     private:
         gAppWindow *gWindowInstance;
-        gInstancedApp (gInstancedApp&){};
-        gInstancedApp& operator =(gInstancedApp*){};
+        gInstancedApp& operator =(gInstancedApp*){return *this;};
+        IODeviceManager *m_device_manager;
+        XioudownGridUnit* paddle() { return this->m_paddle; }
+    public:
+        void initGameKeyboard();
 
         // Xioudown::Essentials::gameIOController *app_io_controller;
 };
 
-
 gInstancedApp* addMovementKeyboardActions(gInstancedApp *(&app));
 
 gInstancedApp* addInteractionsKeyboardActions(gInstancedApp *(&app));
-
